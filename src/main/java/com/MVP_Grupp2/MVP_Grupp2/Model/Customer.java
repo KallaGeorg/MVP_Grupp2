@@ -16,7 +16,6 @@ import jakarta.persistence.Table;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerNumber" )
     private UUID customerNumber;
     @Column(name = "name")
@@ -34,15 +33,14 @@ public class Customer {
     private String payment;
 
     
-    
-    public Customer(UUID customerNumber, String name, String adress, String email, String password, customerOrder order,
-            String payment) {
-        customerNumber = UUID.randomUUID();
+    public Customer() {
+    }
+    public Customer(UUID customerNumber, String name, String adress, String email, String password, String payment) {
+        this.customerNumber = UUID.randomUUID();
         this.name = name;
         this.adress = adress;
         this.email = email;
         this.password = password;
-        this.order = order;
         this.payment = payment;
     }
     public String getName() {
@@ -86,8 +84,6 @@ public class Customer {
     }
     public void setCustomerNumber(UUID customerNumber) {
         this.customerNumber = customerNumber;
-    } 
-
-    
+    }
 
 }
