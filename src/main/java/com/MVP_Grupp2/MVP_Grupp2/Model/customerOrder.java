@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -21,7 +23,9 @@ public class customerOrder {
     private int orderNumber;
     @Column(name="ammount")
     private int ammount;
-    private List<String> articles;
+    @ManyToMany
+    @JoinTable(name = "order_article", joinColumns = @JoinColumn(name="orderNumber"), inverseJoinColumns = @JoinColumn(name="articleNumber"))
+    private List<Article> articles;
     @Column(name="date")
     private Date orderDate;
     @Column(name="orderSum")
@@ -36,11 +40,11 @@ public class customerOrder {
 
     
 
-    public customerOrder(int orderNumber, int ammount, List<String> article, Date orderDate, int orderSumma, Customer customer,
+    public customerOrder(int orderNumber, int ammount, List<Article> articles, Date orderDate, int orderSumma, Customer customer,
             String payment, String status) {
         this.orderNumber = orderNumber;
         this.ammount = ammount;
-        this.articles = article;
+        this.articles = articles;
         this.orderDate = orderDate;
         this.orderSumma = orderSumma;
         this.customer = customer;
@@ -59,11 +63,11 @@ public class customerOrder {
     public void setAmmount(int ammount) {
         this.ammount = ammount;
     }
-    public List<String> getArticles() {
+    public List<Article> getArticles() {
         return articles;
     }
-    public void setArticles(List<String> article) {
-        this.articles = article;
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
     public Date getOrderDate() {
         return orderDate;
