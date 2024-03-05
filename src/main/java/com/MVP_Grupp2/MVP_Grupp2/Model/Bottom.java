@@ -1,5 +1,6 @@
 package com.MVP_Grupp2.MVP_Grupp2.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,13 +12,21 @@ import jakarta.persistence.Table;
 public class Bottom {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "articleNumberBottom")
     private int articleNumberBottom;
+    @Column(name = "genderBottom")
     private String genderBottom;
+    @Column(name = "priceBottom")
     private String priceBottom;
+    @Column(name = "nameBottom")
     private String nameBottom;
+    @Column(name = "sizeBottom")
     private String sizeBottom;
+    @Column(name = "saldoBottom")
     private int saldoBottom;
-    private String betygBottom;
+    @Column(name = "ratingBottom")
+    private String ratingBottom;
+    @Column(name = "commentBottom")
     private String commentBottom;
 
     public int getArticleNumberBottom() {
@@ -56,11 +65,11 @@ public class Bottom {
     public void setSaldoBottom(int saldoBottom) {
         this.saldoBottom = saldoBottom;
     }
-    public String getBetygBottom() {
-        return betygBottom;
+    public String getRatingBottom() {
+        return ratingBottom;
     }
-    public void setBetygBottom(String betygBottom) {
-        this.betygBottom = betygBottom;
+    public void setRatingBottom(String betygBottom) {
+        this.ratingBottom = betygBottom;
     }
     public String getCommentBottom() {
         return commentBottom;

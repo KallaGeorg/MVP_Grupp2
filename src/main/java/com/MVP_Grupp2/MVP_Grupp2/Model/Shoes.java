@@ -1,5 +1,6 @@
 package com.MVP_Grupp2.MVP_Grupp2.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,16 +11,24 @@ import jakarta.persistence.Table;
 @Table(name = "shoes")
 public class Shoes {
     
-      @Id
+    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "articleNumberShoes")
     private int articleNumberShoes;
+    @Column(name = "genderShoes")
     private String genderShoes;
+    @Column(name = "priceShoes")
     private String priceShoes;
+    @Column(name = "nameShoes")
     private String nameShoes;
+    @Column(name = "sizeShoes")
     private String sizeShoes;
+    @Column(name = "saldoShoes")
     private int saldoShoes;
+    @Column(name = "betygShoes")
     private String betygShoes;
-    private String commentShoeString;
+    @Column(name = "commentShoes")
+    private String commentShoes;
 
     public int getArticleNumberShoes() {
         return articleNumberShoes;
@@ -63,11 +72,11 @@ public class Shoes {
     public void setBetygShoes(String betygShoes) {
         this.betygShoes = betygShoes;
     }
-    public String getCommentShoeString() {
-        return commentShoeString;
+    public String getCommentShoes() {
+        return commentShoes;
     }
-    public void setCommentShoeString(String commentShoeString) {
-        this.commentShoeString = commentShoeString;
+    public void setCommentShoes(String commentShoeString) {
+        this.commentShoes = commentShoeString;
     }
 
     
