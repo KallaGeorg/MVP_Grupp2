@@ -38,5 +38,16 @@ public class CustomerService {
 
     public Iterable<Customer> getAllCustomers() {
         return customerRepository.findAll();
+
 }
+
+    public Customer loginCustomer(String email, String password) {
+        Customer customer = customerRepository.findByEmail(email);
+        if (customer != null && BCrypt.checkpw(password, customer.getPassword())) {
+            System.out.println("Bra att du kan logga in!");
+            return customer;
+        } else {
+            throw new RuntimeException("Invalid email eller lösenord!");
+        }
+    }
 }
