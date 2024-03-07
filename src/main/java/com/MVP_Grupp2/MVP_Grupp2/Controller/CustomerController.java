@@ -7,17 +7,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.MVP_Grupp2.MVP_Grupp2.Model.Customer;
 import com.MVP_Grupp2.MVP_Grupp2.Service.CustomerService;
 
-import java.util.List;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
 @RestController
+@Validated
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -27,7 +30,7 @@ public class CustomerController {
     }
 
     @PostMapping("/customer/register")
-    public Customer registerCustomer(@RequestBody Customer customer) {
+    public Customer registerCustomer(@Valid @RequestBody Customer customer) {
         return customerService.registerCustomer(customer.getName(), customer.getAdress(), customer.getEmail(), customer.getPassword(), customer.getPayment());
     }
 
