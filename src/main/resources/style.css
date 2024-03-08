@@ -1,0 +1,43 @@
+header{
+    height: 25px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+body {
+    background-image: url('bilder/Homepage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0; 
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+}
+
+button{
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    height: 20px;
+    margin-left: 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#lineHeader {
+    height: 3px;
+    background-color: #000000;
+}
+
+#chartBtn {
+    position: absolute;
+    right: 50px;
+}
+
