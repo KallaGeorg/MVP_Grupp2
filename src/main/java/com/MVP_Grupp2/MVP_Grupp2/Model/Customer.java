@@ -18,7 +18,6 @@ import jakarta.persistence.Table;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "customerNumber" )
     private UUID customerNumber;
     @Column(name = "name")
