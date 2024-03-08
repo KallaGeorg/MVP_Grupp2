@@ -2,8 +2,6 @@ package com.MVP_Grupp2.MVP_Grupp2.Model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -12,9 +10,8 @@ import jakarta.persistence.Table;
 public class Shoes {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "articleNumberShoes")
-    private int articleNumberShoes;
+    @Column(name = "articleNumber")
+    private int articleNumber;
     @Column(name = "genderShoes")
     private String genderShoes;
     @Column(name = "priceShoes")
@@ -30,11 +27,24 @@ public class Shoes {
     @Column(name = "commentShoes")
     private String commentShoes;
 
-    public int getArticleNumberShoes() {
-        return articleNumberShoes;
+    
+
+    public Shoes(int articleNumber, String genderShoes, String priceShoes, String nameShoes, String sizeShoes,
+            int saldoShoes, String betygShoes, String commentShoes) {
+        this.articleNumber = articleNumber;
+        this.genderShoes = genderShoes;
+        this.priceShoes = priceShoes;
+        this.nameShoes = nameShoes;
+        this.sizeShoes = sizeShoes;
+        this.saldoShoes = saldoShoes;
+        this.betygShoes = betygShoes;
+        this.commentShoes = commentShoes;
     }
-    public void setArticleNumberShoes(int articleNumberShoes) {
-        this.articleNumberShoes = articleNumberShoes;
+    public int getArticleNumber() {
+        return articleNumber;
+    }
+    public void setArticleNumber(int articleNumber) {
+        this.articleNumber = articleNumber;
     }
     public String getGenderShoes() {
         return genderShoes;

@@ -2,8 +2,6 @@ package com.MVP_Grupp2.MVP_Grupp2.Model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,9 +9,8 @@ import jakarta.persistence.Table;
 @Table(name = "bottom")
 public class Bottom {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "articleNumberBottom")
-    private int articleNumberBottom;
+    @Column(name = "articleNumber")
+    private int articleNumber;
     @Column(name = "genderBottom")
     private String genderBottom;
     @Column(name = "priceBottom")
@@ -29,11 +26,24 @@ public class Bottom {
     @Column(name = "commentBottom")
     private String commentBottom;
 
-    public int getArticleNumberBottom() {
-        return articleNumberBottom;
+    
+
+    public Bottom(int articleNumber, String genderBottom, String priceBottom, String nameBottom, String sizeBottom,
+            int saldoBottom, String ratingBottom, String commentBottom) {
+        this.articleNumber = articleNumber;
+        this.genderBottom = genderBottom;
+        this.priceBottom = priceBottom;
+        this.nameBottom = nameBottom;
+        this.sizeBottom = sizeBottom;
+        this.saldoBottom = saldoBottom;
+        this.ratingBottom = ratingBottom;
+        this.commentBottom = commentBottom;
     }
-    public void setArticleNumberBottom(int articleNumberBottom) {
-        this.articleNumberBottom = articleNumberBottom;
+    public int getArticleNumber() {
+        return articleNumber;
+    }
+    public void setArticleNumber(int articleNumber) {
+        this.articleNumber = articleNumber;
     }
     public String getGenderBottom() {
         return genderBottom;

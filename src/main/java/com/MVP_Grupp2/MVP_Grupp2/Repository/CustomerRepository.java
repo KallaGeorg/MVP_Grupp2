@@ -9,5 +9,6 @@ import com.MVP_Grupp2.MVP_Grupp2.Model.Customer;
 
 @Repository
 public interface CustomerRepository extends CrudRepository<Customer, UUID> {
+    //Customer findByName(String name);
     
 }
