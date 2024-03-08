@@ -28,7 +28,7 @@ public class Customer {
 
     @NotNull
     @Email
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @NotNull
