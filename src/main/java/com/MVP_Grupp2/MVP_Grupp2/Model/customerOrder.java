@@ -34,8 +34,6 @@ public class CustomerOrder {
         
     }
 
-
-    
     public CustomerOrder(int order_number, int ammount, Date orderDate, int orderSumma, UUID customerNumber,
             String payment, String status) {
         this.order_number = order_number;
@@ -91,13 +89,9 @@ public class CustomerOrder {
         return customerNumber;
     }
 
-
-
     public void setCustomerNumber(UUID customerNumber) {
         this.customerNumber = customerNumber;
     }
-
-    
 
 }
  
