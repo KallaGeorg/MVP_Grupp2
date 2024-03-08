@@ -1,61 +1,58 @@
 package com.MVP_Grupp2.MVP_Grupp2.Model;
 
 import java.util.Date;
-import java.util.List;
+
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+
+
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="customerOrder")
-public class customerOrder {
+@Table(name="customerorder")
+public class CustomerOrder {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="orderNumber")
-    private int orderNumber;
+    @Column(name="order_number")
+    private int order_number;
     @Column(name="ammount")
     private int ammount;
-    @ManyToMany
-    @JoinTable(name = "order_article", joinColumns = @JoinColumn(name="orderNumber"), inverseJoinColumns = @JoinColumn(name="articleNumber"))
-    private List<Article> articles;
-    @Column(name="date")
+    @Column(name="orderDate")
     private Date orderDate;
     @Column(name="orderSum")
     private int orderSumma;
-    @ManyToOne
-    @JoinColumn(name = "Customer", referencedColumnName = "customerNumber")
-    private Customer customer;
+    @Column(name = "customer_number")
+    private UUID customerNumber;
     @Column(name="payment")
     private String payment;
     @Column(name="status")
     private String status;
 
-    
+    public CustomerOrder(){
+        
+    }
 
-    public customerOrder(int orderNumber, int ammount, List<Article> articles, Date orderDate, int orderSumma, Customer customer,
+
+    
+    public CustomerOrder(int order_number, int ammount, Date orderDate, int orderSumma, UUID customerNumber,
             String payment, String status) {
-        this.orderNumber = orderNumber;
+        this.order_number = order_number;
         this.ammount = ammount;
-        this.articles = articles;
         this.orderDate = orderDate;
         this.orderSumma = orderSumma;
-        this.customer = customer;
+        this.customerNumber = customerNumber;
         this.payment = payment;
         this.status = status;
     }
-    public int getOrderNumber() {
-        return orderNumber;
+
+
+    public int getOrder_number() {
+        return order_number;
     }
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setOrder_number(int order_number) {
+        this.order_number = order_number;
     }
     public int getAmmount() {
         return ammount;
@@ -63,12 +60,7 @@ public class customerOrder {
     public void setAmmount(int ammount) {
         this.ammount = ammount;
     }
-    public List<Article> getArticles() {
-        return articles;
-    }
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
-    }
+   
     public Date getOrderDate() {
         return orderDate;
     }
@@ -81,12 +73,7 @@ public class customerOrder {
     public void setOrderSumma(int orderSumma) {
         this.orderSumma = orderSumma;
     }
-    public Customer getCustomer() {
-        return customer;
-    }
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+ 
     public String getPayment() {
         return payment;
     }
@@ -99,6 +86,18 @@ public class customerOrder {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public UUID getCustomerNumber() {
+        return customerNumber;
+    }
+
+
+
+    public void setCustomerNumber(UUID customerNumber) {
+        this.customerNumber = customerNumber;
+    }
+
     
-    
+
 }
+ 
