@@ -27,8 +27,10 @@ public class Shoes {
     @Column(name = "commentShoes")
     private String commentShoes;
 
-    
+    public Shoes() {
 
+    }
+    
     public Shoes(int articleNumber, String genderShoes, String priceShoes, String nameShoes, String sizeShoes,
             int saldoShoes, String betygShoes, String commentShoes) {
         this.articleNumber = articleNumber;

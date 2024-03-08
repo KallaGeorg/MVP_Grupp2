@@ -26,8 +26,10 @@ public class Top {
     @Column(name="commentTop")
     private String commentTop;
 
-    
+    public Top() {
 
+    }
+    
     public Top(int articleNumber, String genderTop, String priceTop, String nameTop, String sizeTop, int saldoTop,
             String ratingTop, String commentTop) {
         this.articleNumber = articleNumber;
