@@ -26,8 +26,6 @@ public class Bottom {
     @Column(name = "commentBottom")
     private String commentBottom;
 
-    
-
     public Bottom(int articleNumber, String genderBottom, String priceBottom, String nameBottom, String sizeBottom,
             int saldoBottom, String ratingBottom, String commentBottom) {
         this.articleNumber = articleNumber;
