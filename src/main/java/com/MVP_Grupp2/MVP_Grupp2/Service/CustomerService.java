@@ -50,4 +50,12 @@ public class CustomerService {
             throw new RuntimeException("Invalid email eller lösenord!");
         }
     }
+
+    //Georg's metoder
+    public Customer getCustomerByEmail(String email) {
+        return customerRepository.findByEmail(email);
+    }
+    public void saveCustomer(Customer customer) {
+        customerRepository.save(customer);
+    }
 }

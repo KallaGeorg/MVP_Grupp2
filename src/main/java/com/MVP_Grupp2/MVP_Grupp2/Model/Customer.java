@@ -1,14 +1,10 @@
 package com.MVP_Grupp2.MVP_Grupp2.Model;
 
-import java.util.UUID;
 
-import jakarta.persistence.CascadeType;
+import java.util.UUID;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
- import jakarta.persistence.JoinColumn;
-
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -19,7 +15,6 @@ import jakarta.validation.constraints.Size;
 public class Customer {
 
     @Id
-
     @Column(name = "customerNumber" )
     private UUID customerNumber;
 
@@ -41,9 +36,10 @@ public class Customer {
 
     @Column(name = "payment")
     private String payment;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_number", referencedColumnName = "order_number")
-    private CustomerOrder order;
+    
+
+    @Column(name = "order_number")
+    private UUID order_number;
  
     
     public Customer() {
@@ -58,22 +54,19 @@ public class Customer {
 
     }
     
-//     public Customer(UUID customerNumber, String name, String adress, String email, String password, CustomerOrder order,
-//     String payment) {
-// if (customerNumber == null) {
-//     this.customerNumber = UUID.randomUUID();
-// } else {
-//     this.customerNumber = customerNumber;
-// }
-// this.name = name;
-// this.adress = adress;
-// this.email = email;
-// this.password = password;
-// this.order = order;
-// this.payment = payment;
-// }
+  
 
 
+    public Customer(UUID customerNumber, String name, String adress, @NotNull @Email String email,
+            @NotNull @Size(min = 8) String password, String payment, UUID order_number) {
+        this.customerNumber = customerNumber;
+        this.name = name;
+        this.adress = adress;
+        this.email = email;
+        this.password = password;
+        this.payment = payment;
+        this.order_number = order_number;
+    }
     public String getName() {
         return name;
     }
@@ -113,13 +106,12 @@ public class Customer {
     }
 
 
-    public CustomerOrder getOrder() {
-        return order;
+    public UUID getOrder_number() {
+        return order_number;
     }
-
-    public void setOrder(CustomerOrder order) {
-        this.order = order;
-    } 
+    public void setOrder_number(UUID order_number) {
+        this.order_number = order_number;
+    }
 
     
 
