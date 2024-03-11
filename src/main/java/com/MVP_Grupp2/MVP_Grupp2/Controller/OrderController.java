@@ -1,6 +1,8 @@
 package com.MVP_Grupp2.MVP_Grupp2.Controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.MVP_Grupp2.MVP_Grupp2.Model.Bottom;
+
 import com.MVP_Grupp2.MVP_Grupp2.Model.Customer;
 import com.MVP_Grupp2.MVP_Grupp2.Model.CustomerOrder;
 import com.MVP_Grupp2.MVP_Grupp2.Model.OrderRequest;
-import com.MVP_Grupp2.MVP_Grupp2.Model.Shoes;
-import com.MVP_Grupp2.MVP_Grupp2.Model.Top;
+
+
+
 import com.MVP_Grupp2.MVP_Grupp2.Repository.OrderRepository;
+
 
 import com.MVP_Grupp2.MVP_Grupp2.Service.CustomerService;
 
@@ -27,7 +31,7 @@ public class OrderController {
 
     @Autowired
     private OrderRepository orderRepository;
-
+   
     @Autowired
     CustomerService customerService;
 
@@ -54,27 +58,15 @@ public ResponseEntity<String> placeOrder(@RequestBody OrderRequest orderRequest,
         
         if (orderRequest.getTops() != null) {
             order.setTops(orderRequest.getTops());
-            // for (Top top : orderRequest.getTops()) {
-            //     top.setOrder(order);
-            // }
         }
 
-        
         if (orderRequest.getBottoms() != null) {
             order.setBottoms(orderRequest.getBottoms());
-            // for (Bottom bottom : orderRequest.getBottoms()) {
-            //     bottom.setOrder(order);
-            // }
         }
 
-        
         if (orderRequest.getShoes() != null) {
             order.setShoes(orderRequest.getShoes());
-            // for (Shoes shoes : orderRequest.getShoes()) {
-            //     shoes.setOrder(order);
-            // }
         }
-
        
         orderRepository.save(order);
 

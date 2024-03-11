@@ -1,4 +1,4 @@
-package com.test.stripe.controller;
+package com.MVP_Grupp2.MVP_Grupp2.Controller;
 
 import java.util.*;
 import org.springframework.web.bind.annotation.*;

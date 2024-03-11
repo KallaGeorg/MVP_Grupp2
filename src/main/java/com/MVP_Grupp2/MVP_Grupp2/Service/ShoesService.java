@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.MVP_Grupp2.MVP_Grupp2.Model.Shoes;
 import com.MVP_Grupp2.MVP_Grupp2.Repository.ShoesRepository;
 
+import jakarta.annotation.PostConstruct;
+
 
 
 @Service
@@ -15,17 +17,35 @@ public class ShoesService {
     @Autowired
     private ShoesRepository shoesRepository;
 
-    @Transactional
-    public Shoes saveShoes(Shoes shoes){
-        shoes.setArticle_number(2);
-        shoes.setGender("male");
-        shoes.setPrice("600 kr");
-        shoes.setName("Super Sneeker");
-        shoes.setSize("7 1/2");
-        shoes.setSaldo(2);
-        shoes.setRating("toppen");
-        shoes.setComment("Blub bla bla");
-        return shoesRepository.save(shoes);
+    @PostConstruct
+    public void init() {
+        createShoes();
     }
-    
+
+   @Transactional
+    public void createShoes() {
+        Shoes herrshoes = new Shoes(
+            21, 
+            "Herr", 
+            "800", 
+            "Herrskor", 
+            null, 
+            60, 
+            null, 
+            null
+        );
+        Shoes damshoes = new Shoes(
+            22, 
+            "Dam", 
+            "600", 
+            "Damskor", 
+            null, 
+            60, 
+            null, 
+            null
+        );
+
+        shoesRepository.save(herrshoes);
+        shoesRepository.save(damshoes);
+    }
 }

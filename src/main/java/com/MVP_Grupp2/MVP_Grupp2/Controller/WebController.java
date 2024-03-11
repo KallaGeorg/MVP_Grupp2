@@ -1,4 +1,4 @@
-package com.test.stripe.controller;
+package com.MVP_Grupp2.MVP_Grupp2.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
