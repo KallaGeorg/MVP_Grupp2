@@ -3,6 +3,8 @@ package com.MVP_Grupp2.MVP_Grupp2.Model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -10,86 +12,109 @@ import jakarta.persistence.Table;
 public class Shoes {
     
     @Id
-    @Column(name = "articleNumber")
-    private int articleNumber;
-    @Column(name = "genderShoes")
-    private String genderShoes;
-    @Column(name = "priceShoes")
-    private String priceShoes;
-    @Column(name = "nameShoes")
-    private String nameShoes;
-    @Column(name = "sizeShoes")
-    private String sizeShoes;
-    @Column(name = "saldoShoes")
-    private int saldoShoes;
-    @Column(name = "betygShoes")
-    private String betygShoes;
-    @Column(name = "commentShoes")
-    private String commentShoes;
+    @Column(name = "article_number")
+    private int article_number;
+    @Column(name = "gender")
+    private String gender;
+    @Column(name = "price")
+    private String price;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "size")
+    private String size;
+    @Column(name = "saldo")
+    private int saldo;
+    @Column(name = "rating")
+    private String rating;
+    @Column(name = "comment")
+    private String comment;
+   
 
     public Shoes() {
 
     }
     
-    public Shoes(int articleNumber, String genderShoes, String priceShoes, String nameShoes, String sizeShoes,
-            int saldoShoes, String betygShoes, String commentShoes) {
-        this.articleNumber = articleNumber;
-        this.genderShoes = genderShoes;
-        this.priceShoes = priceShoes;
-        this.nameShoes = nameShoes;
-        this.sizeShoes = sizeShoes;
-        this.saldoShoes = saldoShoes;
-        this.betygShoes = betygShoes;
-        this.commentShoes = commentShoes;
+
+    public Shoes(int article_number, String gender, String price, String name, String size, int saldo, String rating,
+            String comment) {
+        this.article_number = article_number;
+        this.gender = gender;
+        this.price = price;
+        this.name = name;
+        this.size = size;
+        this.saldo = saldo;
+        this.rating = rating;
+        this.comment = comment;
+      
     }
-    public int getArticleNumber() {
-        return articleNumber;
+
+
+    public int getArticle_number() {
+        return article_number;
     }
-    public void setArticleNumber(int articleNumber) {
-        this.articleNumber = articleNumber;
+
+    public void setArticle_number(int article_number) {
+        this.article_number = article_number;
     }
-    public String getGenderShoes() {
-        return genderShoes;
+
+    public String getGender() {
+        return gender;
     }
-    public void setGenderShoes(String genderShoes) {
-        this.genderShoes = genderShoes;
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
-    public String getPriceShoes() {
-        return priceShoes;
+
+    public String getPrice() {
+        return price;
     }
-    public void setPriceShoes(String priceShoes) {
-        this.priceShoes = priceShoes;
+
+    public void setPrice(String price) {
+        this.price = price;
     }
-    public String getNameShoes() {
-        return nameShoes;
+
+    public String getName() {
+        return name;
     }
-    public void setNameShoes(String nameShoes) {
-        this.nameShoes = nameShoes;
+
+    public void setName(String name) {
+        this.name = name;
     }
-    public String getSizeShoes() {
-        return sizeShoes;
+
+    public String getSize() {
+        return size;
     }
-    public void setSizeShoes(String sizeShoes) {
-        this.sizeShoes = sizeShoes;
+
+    public void setSize(String size) {
+        this.size = size;
     }
-    public int getSaldoShoes() {
-        return saldoShoes;
+
+    public int getSaldo() {
+        return saldo;
     }
-    public void setSaldoShoes(int saldoShoes) {
-        this.saldoShoes = saldoShoes;
+
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
     }
-    public String getBetygShoes() {
-        return betygShoes;
+
+    public String getRating() {
+        return rating;
     }
-    public void setBetygShoes(String betygShoes) {
-        this.betygShoes = betygShoes;
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
-    public String getCommentShoes() {
-        return commentShoes;
+
+    public String getComment() {
+        return comment;
     }
-    public void setCommentShoes(String commentShoeString) {
-        this.commentShoes = commentShoeString;
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
+
+
+    
 
     
 }
