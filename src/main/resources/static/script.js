@@ -166,11 +166,27 @@ function showRegisterForm() {
     let adress = document.getElementById('adress').value;
     let payment = document.getElementById('payment').value;
 
-    // Check if password and confirmPassword are the same
+
+    if (!name || !email || !password || !confirmPassword || !adress) {
+        alert('Du måste fylla i alla fält!');
+        return;
+    }
+
     if (password !== confirmPassword) {
         alert('Lösenord och bekräfta lösenord stämmer inte överens!');
         return;
     }
+
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Email är inte i korrekt format!');
+        return;
+    }
+    
+    if (password.length < 8) {
+        alert('Lösenord måste minst vara 8 tecken långt!');
+        return;
+        }
 
     let customerDetails = {
         name: name,
@@ -179,6 +195,12 @@ function showRegisterForm() {
         password: password,
         payment: payment
     };
+    alert('Registrering lyckades!');
+    console.log(customerDetails);
+    flush();
+    document.getElementById('pageContentDiv').style.display = 'block';
+    document.getElementById('loginContentDiv').style.display = 'none';
+    homeContent();
 
     fetch('http://localhost:8080/customer/register', {
         method: 'POST',
@@ -195,12 +217,3 @@ function showRegisterForm() {
     });
 
 }
-
-/* 
-// To hide
-document.getElementById('pageContentDiv').style.display = 'none';
-document.getElementById('loginContentDiv').style.display = 'none';
-
-// To show
-document.getElementById('pageContentDiv').style.display = 'block';
-document.getElementById('loginContentDiv').style.display = 'block'; */
