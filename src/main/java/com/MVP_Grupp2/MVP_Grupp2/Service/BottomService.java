@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.MVP_Grupp2.MVP_Grupp2.Model.Bottom;
 import com.MVP_Grupp2.MVP_Grupp2.Repository.BottomRepository;
 
+import jakarta.annotation.PostConstruct;
+
 
 @Service
 public class BottomService {
@@ -14,18 +16,36 @@ public class BottomService {
     @Autowired
     private BottomRepository bottomRepository;
 
+      @PostConstruct
+    public void init() {
+        createBottoms();
+    }
+    
     @Transactional
-    public Bottom saveBottom(Bottom bottom){
-        bottom.setArticle_number(3);
-        bottom.setGender("male");
-        bottom.setPrice("500 kr");
-        bottom.setName("Trousers");
-        bottom.setSize("XXL");
-        bottom.setSaldo(3);
-        bottom.setRating("super");
-        bottom.setComment("bla bla");
-        System.out.println(bottom);
-        return bottomRepository.save(bottom);
+    public void createBottoms() {
+        Bottom herrbyxor = new Bottom(
+            1, // articleNumber
+            "Herr", // genderBottom
+            "500 SEK", // priceBottom
+            "Herrbyxor", // nameBottom
+            null, // sizeBottom
+            40, // saldoBottom
+            null, // ratingBottom
+            null // commentBottom
+        );
+        Bottom dambyxor = new Bottom(
+            2,
+            "Dam",
+            "600 SEK",
+            "Dambyxor",
+            null,
+            80,
+            null,
+            null
+        );
+
+        bottomRepository.save(herrbyxor);
+        bottomRepository.save(dambyxor);
     }
     
 }

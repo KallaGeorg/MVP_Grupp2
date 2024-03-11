@@ -45,11 +45,13 @@ public class Top {
         this.saldo = saldo;
         this.rating = rating;
         this.comment = comment;
-        
     }
 
 
-  
+
+
+
+
 
     public String getGender() {
         return gender;
@@ -120,6 +122,8 @@ public class Top {
         this.comment = comment;
     }
 
+
+    
 
     public int getArticle_number() {
         return article_number;

@@ -28,7 +28,8 @@ public class Shoes {
     private String rating;
     @Column(name = "comment")
     private String comment;
-   
+  
+    
 
     public Shoes() {
 
@@ -45,8 +46,13 @@ public class Shoes {
         this.saldo = saldo;
         this.rating = rating;
         this.comment = comment;
-      
     }
+
+
+
+
+
+
 
 
     public int getArticle_number() {
@@ -114,7 +120,7 @@ public class Shoes {
     }
 
 
-    
 
-    
+  
+      
 }

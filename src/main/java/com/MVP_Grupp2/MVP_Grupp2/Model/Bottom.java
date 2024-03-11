@@ -27,6 +27,7 @@ public class Bottom {
     private String rating;
     @Column(name = "comment")
     private String comment;
+   
     
 
     public Bottom() {
@@ -43,8 +44,11 @@ public class Bottom {
         this.saldo = saldo;
         this.rating = rating;
         this.comment = comment;
-      
     }
+
+
+
+
 
 
 
@@ -104,6 +108,7 @@ public class Bottom {
         this.comment = comment;
     }
 
+   
 
 
     public int getArticle_number() {
@@ -114,8 +119,5 @@ public class Bottom {
     public void setArticle_number(int article_number) {
         this.article_number = article_number;
     }
-
-   
-    
     
 }
