@@ -19,16 +19,22 @@ h1 {
     color: #ffffff;
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
 }
+h3 {
+    font-size: 25px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+}
 
 button{
     background-color: transparent;
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
     height: 20px;
-    margin-left: 1rem;
     border: none;
     cursor: pointer;
     font-size: 20px;
+    padding-left: 30px;
 }
 
 #lineHeader {
@@ -41,3 +47,35 @@ button{
     right: 50px;
 }
 
+#pageContentDiv {
+    background-color: rgba(128, 128, 128, 0.5);
+    width: 900px; 
+    position: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#loginContentDiv {
+    background-color: rgba(211, 211, 211, 0.8);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    margin: 20px;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 20px;
+    width: 500px;
+}
+
+.formBtns{
+    background-color: rgba(2, 225, 2, 0.848);
+    color: rgb(0, 0, 0);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    height: 40px;
+    width: 120px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 0px;
+}
