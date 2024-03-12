@@ -7,8 +7,18 @@ let chartBtn = document.getElementById('chartBtn');
 let pageContentDiv = document.getElementById('pageContentDiv');
 let startContent = document.getElementById('startContent');
 let loginContentDiv = document.getElementById('loginContentDiv');
+let customerNumber = localStorage.getItem('customerNumber');
+let logoutBtn = document.getElementById('logoutBtn');
+
 let startContentText = startContent;
 
+if (customerNumber) {
+    document.getElementById('chartBtn').style.display = 'inline-block';
+    document.getElementById('orderBtn').style.display = 'inline-block';
+    document.getElementById('logoutBtn').style.display = 'inline-block';
+    document.getElementById('loginBtn').style.display = 'none';
+    
+}
 let chartNumber = 3;
 
 let buttonContent = chartBtn.innerHTML;
@@ -56,7 +66,18 @@ chartBtn.addEventListener("click", function() {
     document.getElementById('pageContentDiv').style.display = 'none';
     document.getElementById('loginContentDiv').style.display = 'none';
 });
+logoutBtn.addEventListener("click", function() {
 
+    localStorage.removeItem('customerNumber');
+    document.getElementById('chartBtn').style.display = 'none';
+    document.getElementById('orderBtn').style.display = 'none';
+    document.getElementById('logoutBtn').style.display = 'none';
+    document.getElementById('loginBtn').style.display = 'inline-block';
+    flush();
+    homeContent();
+    document.getElementById('pageContentDiv').style.display = 'block';
+    document.getElementById('loginContentDiv').style.display = 'none';
+});
 function flush() {
     pageContentDiv.innerHTML = "";
     loginContentDiv.innerHTML = "";
@@ -69,9 +90,9 @@ function loginContent() {
     let loginPassword = document.createElement('h1');
     loginPassword.innerHTML = "Lösenord: <input type='password' id='password' name='password'><br><br>";
 
-    let loginBtn = document.createElement('button');
-    loginBtn.innerHTML = "Logga in";
-    loginBtn.className = "formBtns";
+    let loginUserBtn = document.createElement('button');
+    loginUserBtn.innerHTML = "Logga in";
+    loginUserBtn.className = "formBtns";
 
     let cancelBtn = document.createElement('button');
     cancelBtn.innerHTML = "Avbryt";
@@ -85,9 +106,10 @@ function loginContent() {
 
     loginContentDiv.appendChild(loginEmail);
     loginContentDiv.appendChild(loginPassword);
-    loginContentDiv.appendChild(loginBtn);
+    loginContentDiv.appendChild(loginUserBtn);
     loginContentDiv.appendChild(cancelBtn);
     loginContentDiv.appendChild(registerBtn);
+
 
     cancelBtn.addEventListener("click", function() {
         console.log("cancelBtn clicked");
@@ -104,32 +126,74 @@ function loginContent() {
         document.getElementById('loginContentDiv').style.display = 'block';
         showRegisterForm();
     });
-}
+    loginUserBtn.addEventListener("click", function() {
+        let email = document.getElementById('text').value;
+        let password = document.getElementById('password').value;
+    
+        let loginDetails = {
+            email: email,
+            password: password
+        };
+        console.log(email, password);
+    
+        fetch('http://localhost:8080/customer/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginDetails)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(customer => {
+            console.log(customer);
+            flush();
+            let loginSucces = document.createElement('h1');
+            loginSucces.innerHTML = "Välkommen " + customer.name;
+            localStorage.setItem('customerNumber', customer.customerNumber);
+            document.getElementById('chartBtn').style.display = 'inline-block';
+            document.getElementById('orderBtn').style.display = 'inline-block';
+            document.getElementById('logoutBtn').style.display = 'inline-block';
+            document.getElementById('loginBtn').style.display = 'none';
+            loginContentDiv.appendChild(loginSucces);
+            
+        })
 
-function homeContent() {
-    let homeContent = document.createElement('h1');
-    homeContent.innerHTML = startContentText.innerText;
-    pageContentDiv.appendChild(homeContent);
-}
+   
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        }
+
+        function homeContent() {
+            let homeContent = document.createElement('h1');
+            homeContent.innerHTML = startContentText.innerText;
+            pageContentDiv.appendChild(homeContent);
+        }
 
 function showRegisterForm() {
     let registerName = document.createElement('h3');
-    registerName.innerHTML = "Namn: <input type='text' id='name' name='name'><br><br>";
+    registerName.innerHTML = "Namn: <br><input type='text' id='name' name='name'><br><br>";
 
     let registerEmail = document.createElement('h3');
-    registerEmail.innerHTML = "E-mail: <input type='text' id='email' name='email'><br><br>";
+    registerEmail.innerHTML = "E-mail: <br><input type='text' id='email' name='email'><br><br>";
 
     let registerPassword = document.createElement('h3');
-    registerPassword.innerHTML = "Lösenord: <input type='password' id='password' name='password'><br><br>";
+    registerPassword.innerHTML = "Lösenord: <br><input type='password' id='password' name='password'><br><br>";
 
     let confirmPassword = document.createElement('h3');
-    confirmPassword.innerHTML = "Bekräfta lösenord: <input type='password' id='confirmPassword' name='confirmPassword'><br><br>";
+    confirmPassword.innerHTML = "Bekräfta lösenord: <br><input type='password' id='confirmPassword' name='confirmPassword'><br><br>";
 
     let registerAdress = document.createElement('h3');
-    registerAdress.innerHTML = "Adress: <input type='text' id='adress' name='adress'><br><br>";
+    registerAdress.innerHTML = "Adress: <br><input type='text' id='adress' name='adress'><br><br>";
 
     let registerPayment = document.createElement('h3');
-    registerPayment.innerHTML = "Betalning: <input type='hidden' id='payment' name='payment' value='none'><br><br>";
+    registerPayment.innerHTML = "Betalning: <br><input type='hidden' id='payment' name='payment' value='none'><br><br>";
 
     let cancelBtn = document.createElement('button');
     cancelBtn.innerHTML = "Avbryt";
@@ -217,3 +281,4 @@ function showRegisterForm() {
     });
 
 }
+
