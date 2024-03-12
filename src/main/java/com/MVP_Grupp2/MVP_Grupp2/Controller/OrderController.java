@@ -40,7 +40,7 @@ public class OrderController {
     @PostMapping("/orders/{customerNumber}")
 public ResponseEntity<String> placeOrder(@RequestBody OrderRequest orderRequest, @PathVariable UUID customerNumber ) {
     try {
-        Customer customer = customerService.getCustomer(customerNumber); // Update to get customer by email
+        Customer customer = customerService.getCustomer(customerNumber); 
         if (customer == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Customer not found");
         }
@@ -71,7 +71,7 @@ public ResponseEntity<String> placeOrder(@RequestBody OrderRequest orderRequest,
            order.setTopPrices(topPrices);
            order.setTopArticleNumbers(topArticleNumbers);
 
-           // Populate bottom properties
+          
            List<String> bottomNames = new ArrayList<>();
            List<BigDecimal> bottomPrices = new ArrayList<>();
            List<Integer> bottomArticleNumbers = new ArrayList<>();
@@ -86,7 +86,7 @@ public ResponseEntity<String> placeOrder(@RequestBody OrderRequest orderRequest,
            order.setBottomPrices(bottomPrices);
            order.setBottomArticleNumbers(bottomArticleNumbers);
 
-           // Populate shoes properties
+         
            List<String> shoesNames = new ArrayList<>();
            List<BigDecimal> shoesPrices = new ArrayList<>();
            List<Integer> shoesArticleNumbers = new ArrayList<>();
