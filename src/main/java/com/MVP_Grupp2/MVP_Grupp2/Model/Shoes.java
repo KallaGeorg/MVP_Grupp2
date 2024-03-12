@@ -1,10 +1,10 @@
 package com.MVP_Grupp2.MVP_Grupp2.Model;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,7 +17,7 @@ public class Shoes {
     @Column(name = "gender")
     private String gender;
     @Column(name = "price")
-    private String price;
+    private BigDecimal price;
     @Column(name = "name")
     private String name;
     @Column(name = "size")
@@ -36,8 +36,8 @@ public class Shoes {
     }
     
 
-    public Shoes(int article_number, String gender, String price, String name, String size, int saldo, String rating,
-            String comment) {
+    public Shoes(int article_number, String gender, BigDecimal price, String name, String size, int saldo,
+            String rating, String comment) {
         this.article_number = article_number;
         this.gender = gender;
         this.price = price;
@@ -47,12 +47,6 @@ public class Shoes {
         this.rating = rating;
         this.comment = comment;
     }
-
-
-
-
-
-
 
 
     public int getArticle_number() {
@@ -71,13 +65,7 @@ public class Shoes {
         this.gender = gender;
     }
 
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
+   
 
     public String getName() {
         return name;
@@ -117,6 +105,16 @@ public class Shoes {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
 
