@@ -26,7 +26,7 @@ public class CustomerOrder {
     private UUID order_number;
     @Column(name="article_number")
     private int article_number;
-    @Column(name="ammount")
+    @Column(name="ammosunt")
     private int ammount;
     @Column(name="orderDate")
     private Date orderDate;
