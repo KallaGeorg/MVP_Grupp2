@@ -4,6 +4,7 @@ package com.MVP_Grupp2.MVP_Grupp2.Controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,13 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.MVP_Grupp2.MVP_Grupp2.Model.Bottom;
 import com.MVP_Grupp2.MVP_Grupp2.Model.Customer;
 import com.MVP_Grupp2.MVP_Grupp2.Model.CustomerOrder;
 import com.MVP_Grupp2.MVP_Grupp2.Model.OrderRequest;
-
-
-
+import com.MVP_Grupp2.MVP_Grupp2.Model.Shoes;
+import com.MVP_Grupp2.MVP_Grupp2.Model.Top;
 import com.MVP_Grupp2.MVP_Grupp2.Repository.OrderRepository;
 
 
@@ -40,7 +40,7 @@ public class OrderController {
     @PostMapping("/orders/{customerNumber}")
 public ResponseEntity<String> placeOrder(@RequestBody OrderRequest orderRequest, @PathVariable UUID customerNumber ) {
     try {
-        Customer customer = customerService.getCustomer(customerNumber); // Update to get customer by email
+        Customer customer = customerService.getCustomer(customerNumber); 
         if (customer == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Customer not found");
         }
@@ -56,17 +56,50 @@ public ResponseEntity<String> placeOrder(@RequestBody OrderRequest orderRequest,
         customer.setOrder_number(orderNumber);
         customerService.saveCustomer(customer);
         
-        if (orderRequest.getTops() != null) {
-            order.setTops(orderRequest.getTops());
-        }
+        
+           List<String> topNames = new ArrayList<>();
+           List<BigDecimal> topPrices = new ArrayList<>();
+           List<Integer> topArticleNumbers = new ArrayList<>();
+           if (orderRequest.getTops() != null && !orderRequest.getTops().isEmpty()) {
+               for (Top top : orderRequest.getTops()) {
+                   topNames.add(top.getName());
+                   topPrices.add(top.getPrice());
+                   topArticleNumbers.add(top.getArticle_number());
+               }
+           }
+           order.setTopNames(topNames);
+           order.setTopPrices(topPrices);
+           order.setTopArticleNumbers(topArticleNumbers);
 
-        if (orderRequest.getBottoms() != null) {
-            order.setBottoms(orderRequest.getBottoms());
-        }
+          
+           List<String> bottomNames = new ArrayList<>();
+           List<BigDecimal> bottomPrices = new ArrayList<>();
+           List<Integer> bottomArticleNumbers = new ArrayList<>();
+           if (orderRequest.getBottoms() != null && !orderRequest.getBottoms().isEmpty()) {
+               for (Bottom bottom : orderRequest.getBottoms()) {
+                   bottomNames.add(bottom.getName());
+                   bottomPrices.add(bottom.getPrice());
+                   bottomArticleNumbers.add(bottom.getArticle_number());
+               }
+           }
+           order.setBottomNames(bottomNames);
+           order.setBottomPrices(bottomPrices);
+           order.setBottomArticleNumbers(bottomArticleNumbers);
 
-        if (orderRequest.getShoes() != null) {
-            order.setShoes(orderRequest.getShoes());
-        }
+         
+           List<String> shoesNames = new ArrayList<>();
+           List<BigDecimal> shoesPrices = new ArrayList<>();
+           List<Integer> shoesArticleNumbers = new ArrayList<>();
+           if (orderRequest.getShoes() != null && !orderRequest.getShoes().isEmpty()) {
+               for (Shoes shoes : orderRequest.getShoes()) {
+                   shoesNames.add(shoes.getName());
+                   shoesPrices.add(shoes.getPrice());
+                   shoesArticleNumbers.add(shoes.getArticle_number());
+               }
+           }
+           order.setShoesNames(shoesNames);
+           order.setShoesPrices(shoesPrices);
+           order.setShoesArticleNumbers(shoesArticleNumbers);
        
         orderRepository.save(order);
 
