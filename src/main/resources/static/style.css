@@ -37,6 +37,10 @@ button {
     padding-left: 30px;
 }
 
+button:hover {
+    background-color: rgb(97, 233, 126);
+}
+
 #lineHeader {
     height: 3px;
     background-color: #000000;
@@ -68,7 +72,41 @@ button {
     width: 500px;
 }
 
-.formBtns {
+#chartContentDiv {
+    background-color: rgba(211, 211, 211, 0.8);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    margin: 20px;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 20px;
+    width: 500px;
+    float: right;
+}
+
+#productContentDiv { 
+    background-color: rgba(211, 211, 211, 0.8);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    margin: 20px;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 20px;
+    width: 500px;
+}
+
+#productBtnDiv {
+    background-color: rgba(211, 211, 211, 0.8);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    position: absolute;
+    top: 48px;
+    left: 250px;
+    margin: 20px;
+    border-radius: 30px;
+    padding: 20px;
+    width: 100px;
+    height: 150px;
+}
+
+.formBtns{
     background-color: rgba(2, 225, 2, 0.848);
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -80,19 +118,45 @@ button {
     padding-left: 0px;
 }
 
-#chartBtn,
-#orderBtn,
-#logoutBtn {
-    display: none;
+.manProductBtns{
+    background-color: rgba(2, 225, 2, 0.848);
+    color: rgb(0, 0, 0);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    border-color: #000000;
+    border-inline-style: revert;
+    border-bottom: double;
+    border-top: thin;
+    border-top-style: solid;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 0px;
+    position: absolute;
+    top: 40px;
+    left: -20px;
+
 }
 
-#chartContentDiv {
-    background-color: rgba(211, 211, 211, 0.8);
+.womanProductBtns{
+    background-color: rgba(2, 225, 2, 0.848);
+    color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
-    float: right;
-    margin: 20px;
-    border-radius: 30px;
-    padding: 20px;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    border-color: #000000;
+    border-inline-style: revert;
+    border-bottom: double;
+    border-top: thin;
+    border-top-style: solid;
+    cursor: pointer;
     font-size: 20px;
-    width: 500px;
+    padding-left: 0px;
+    position: absolute;
+    top: 100px;
+    left: -20px;
+    
+    
 }

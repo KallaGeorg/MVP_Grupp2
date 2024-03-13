@@ -4,12 +4,16 @@ let orderBtn = document.getElementById("orderBtn");
 let inspirationBtn = document.getElementById("inspirationBtn");
 let homeBtn = document.getElementById("homeBtn");
 let chartBtn = document.getElementById("chartBtn");
+let logoutBtn = document.getElementById("logoutBtn");
+let productBtnDiv = document.getElementById("productBtnDiv");
+
+
 let pageContentDiv = document.getElementById("pageContentDiv");
 let startContent = document.getElementById("startContent");
 let loginContentDiv = document.getElementById("loginContentDiv");
 let chartContentDiv = document.getElementById("chartContentDiv");
 let customerNumber = localStorage.getItem("customerNumber");
-let logoutBtn = document.getElementById("logoutBtn");
+let productContentDiv = document.getElementById("productContentDiv");
 
 let startContentText = startContent;
 
@@ -25,14 +29,13 @@ let buttonContent = chartBtn.innerHTML;
 
 chartBtn.innerHTML = chartNumber + " " + buttonContent;
 
-document.getElementById("loginContentDiv").style.display = "none";
-document.getElementById("chartContentDiv").style.display = "none";
+flush();
+pageContentDiv.style.display = "block";
+homeContent();
 
 loginBtn.addEventListener("click", function () {
     console.log("loginBtn clicked");
     flush();
-    document.getElementById("chartContentDiv").style.display = "none";
-    document.getElementById("pageContentDiv").style.display = "none";
     document.getElementById("loginContentDiv").style.display = "block";
     loginContent();
 });
@@ -40,41 +43,43 @@ loginBtn.addEventListener("click", function () {
 productBtn.addEventListener("click", function () {
     console.log("productBtn clicked");
     flush();
-    document.getElementById("chartContentDiv").style.display = "none";
-    document.getElementById("pageContentDiv").style.display = "none";
-    document.getElementById("loginContentDiv").style.display = "none";
+    document.getElementById("productBtnDiv").style.display = "flow";
+    productContent();
+
 });
 orderBtn.addEventListener("click", function () {
     console.log("orderBtn clicked");
     flush();
-    document.getElementById("chartContentDiv").style.display = "none";
-    document.getElementById("pageContentDiv").style.display = "none";
-    document.getElementById("loginContentDiv").style.display = "none";
+
 });
 inspirationBtn.addEventListener("click", function () {
     console.log("inspirationBtn clicked");
     flush();
-    document.getElementById("chartContentDiv").style.display = "none";
-    document.getElementById("pageContentDiv").style.display = "none";
-    document.getElementById("loginContentDiv").style.display = "none";
 });
 homeBtn.addEventListener("click", function () {
     console.log("homeBtn clicked");
     flush();
-    document.getElementById("chartContentDiv").style.display = "none";
     document.getElementById("pageContentDiv").style.display = "block";
-    document.getElementById("loginContentDiv").style.display = "none";
     homeContent();
 });
 chartBtn.addEventListener("click", function () {
     console.log("chartBtn clicked");
-    flush();
+    document.getElementById('pageContentDiv').style.display = 'none';
+    document.getElementById('loginContentDiv').style.display = 'none';
+    document.getElementById("productContentDiv").style.display = "none";
+    document.getElementById("productBtnDiv").style.display = "none";
+    pageContentDiv.innerHTML = "";
+    loginContentDiv.innerHTML = "";
+    productContentDiv.innerHTML = "";
+    productBtnDiv.innerHTML = "";
     if (document.getElementById("chartContentDiv").style.display === "none") {
+        flush();
         document.getElementById("pageContentDiv").style.display = "none";
         document.getElementById("loginContentDiv").style.display = "none";
         document.getElementById("chartContentDiv").style.display = "block";
         chartContent();
     } else {
+        flush();
         document.getElementById("pageContentDiv").style.display = "block";
         document.getElementById("loginContentDiv").style.display = "none";
         document.getElementById("chartContentDiv").style.display = "none";
@@ -89,14 +94,20 @@ logoutBtn.addEventListener("click", function () {
     document.getElementById("loginBtn").style.display = "inline-block";
     flush();
     homeContent();
-    document.getElementById("chartContentDiv").style.display = "none";
     document.getElementById("pageContentDiv").style.display = "block";
-    document.getElementById("loginContentDiv").style.display = "none";
 });
+
 function flush() {
     pageContentDiv.innerHTML = "";
     loginContentDiv.innerHTML = "";
     chartContentDiv.innerHTML = "";
+    productContentDiv.innerHTML = "";
+    productBtnDiv.innerHTML = "";
+    document.getElementById('pageContentDiv').style.display = 'none';
+    document.getElementById('loginContentDiv').style.display = 'none';
+    document.getElementById("productContentDiv").style.display = "none";
+    document.getElementById("productBtnDiv").style.display = "none";
+    document.getElementById("chartContentDiv").style.display = "none";
 }
 
 function loginContent() {
@@ -181,6 +192,37 @@ function loginContent() {
         .catch((error) => {
             console.error("Error:", error);
         });
+}
+
+function productContent(){
+    
+    let manBtn = document.createElement('button');
+    manBtn.innerHTML = "Herr";
+    manBtn.style.marginLeft = "40px";
+    manBtn.className = "manProductBtns";
+
+    let womanBtn = document.createElement('button');
+    womanBtn.innerHTML = "Dam";
+    womanBtn.style.marginLeft = "40px";
+    womanBtn.className = "womanProductBtns";
+    
+    productBtnDiv.appendChild(manBtn);
+    productBtnDiv.appendChild(womanBtn);
+        
+    manBtn.addEventListener("click", function() { 
+        console.log("manBtn clicked");
+        flush();
+        document.getElementById('productContentDiv').style.display = 'block';
+        showManProducts();
+    });
+
+    womanBtn.addEventListener("click", function() { 
+        console.log("womanBtn clicked");
+        flush();
+        document.getElementById('productContentDiv').style.display = 'block';
+        showWomanProducts();
+    });
+
 }
 
 function homeContent() {
@@ -339,5 +381,58 @@ function chartContent() {
         document.getElementById("loginContentDiv").style.display = "none";
         document.getElementById("chartContentDiv").style.display = "none";
         homeContent();
+    });
+}
+
+function showManProducts() {
+ 
+    let productTypes = ["bottom", "top", "shoes"];
+    let imageNames = ["herrbyxor", "t-shirt_herr", "herrskor"];
+
+    productTypes.forEach(function(productType, index) {
+
+        fetch('http://localhost:8080/api/products/men/' + productType)
+            .then(response => response.json())
+            .then(products => {
+                let manProductOutput = document.createElement("div");
+                manProductOutput.className = "manOutput";
+                products.forEach(product => {
+                    manProductOutput.innerHTML += `
+                        <p>${product.name}: ${product.price}</p>
+                        <img src="../bilder/${imageNames[index]}.jpg" alt="${product.name}" width="200" height="200">
+                        
+                    `;
+                });
+                document.getElementById('productContentDiv').appendChild(manProductOutput);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+}
+
+function showWomanProducts() {
+ 
+    let productTypes = ["bottom", "top", "shoes"];
+    let imageNames = ["dambyxor", "t-shirt_dam", "damskor"];
+
+    productTypes.forEach(function(productType, index) {
+
+        fetch('http://localhost:8080/api/products/woman/' + productType)
+            .then(response => response.json())
+            .then(products => {
+                let womanProductOutput = document.createElement("div");
+                womanProductOutput.className = "womanOutput";
+                products.forEach(product => {
+                    womanProductOutput.innerHTML += `
+                        <p>${product.name}: ${product.price}</p>
+                        <img src="../bilder/${imageNames[index]}.jpg" alt="${product.name}" width="200" height="200">
+                    `;
+                });
+                document.getElementById('productContentDiv').appendChild(womanProductOutput);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     });
 }
