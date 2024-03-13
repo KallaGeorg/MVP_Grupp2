@@ -13,8 +13,6 @@ let chartContentDiv = document.getElementById("chartContentDiv");
 let customerNumber = localStorage.getItem("customerNumber");
 let productContentDiv = document.getElementById("productContentDiv");
 let startContentText = startContent;
-let productBtnDiv = document.getElementById("productBtnDiv");
-let productContentDiv = document.getElementById("productContentDiv");
 
 if (customerNumber) {
     document.getElementById("chartBtn").style.display = "inline-block";
