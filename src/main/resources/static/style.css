@@ -1,16 +1,16 @@
-header{
+header {
     height: 25px;
     padding: 10px;
     background-color: rgb(255, 255, 255);
 }
 
 body {
-    background-image: url('../bilder/Homepage.jpg');
+    background-image: url("../bilder/Homepage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     margin: 0;
-    padding: 0; 
+    padding: 0;
 }
 
 h1 {
@@ -26,7 +26,7 @@ h3 {
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
 }
 
-button{
+button {
     background-color: transparent;
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -49,7 +49,7 @@ button{
 
 #pageContentDiv {
     background-color: rgba(128, 128, 128, 0.5);
-    width: 900px; 
+    width: 900px;
     position: center;
     margin: 0 auto;
     margin-top: 20px;
@@ -68,7 +68,7 @@ button{
     width: 500px;
 }
 
-.formBtns{
+.formBtns {
     background-color: rgba(2, 225, 2, 0.848);
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -80,6 +80,19 @@ button{
     padding-left: 0px;
 }
 
-#chartBtn, #orderBtn, #logoutBtn {
+#chartBtn,
+#orderBtn,
+#logoutBtn {
     display: none;
+}
+
+#chartContentDiv {
+    background-color: rgba(211, 211, 211, 0.8);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    float: right;
+    margin: 20px;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 20px;
+    width: 500px;
 }
