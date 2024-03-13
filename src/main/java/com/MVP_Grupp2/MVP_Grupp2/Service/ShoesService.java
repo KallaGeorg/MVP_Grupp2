@@ -1,5 +1,7 @@
 package com.MVP_Grupp2.MVP_Grupp2.Service;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +29,7 @@ public class ShoesService {
         Shoes herrshoes = new Shoes(
             21, 
             "Herr", 
-            "800", 
+            BigDecimal.valueOf(800.00), 
             "Herrskor", 
             null, 
             60, 
@@ -37,7 +39,7 @@ public class ShoesService {
         Shoes damshoes = new Shoes(
             22, 
             "Dam", 
-            "600", 
+            BigDecimal.valueOf(700.00), 
             "Damskor", 
             null, 
             60, 

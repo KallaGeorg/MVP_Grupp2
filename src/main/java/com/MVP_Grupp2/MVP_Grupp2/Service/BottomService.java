@@ -1,5 +1,7 @@
 package com.MVP_Grupp2.MVP_Grupp2.Service;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +28,7 @@ public class BottomService {
         Bottom herrbyxor = new Bottom(
             1, // articleNumber
             "Herr", // genderBottom
-            "500 SEK", // priceBottom
+            BigDecimal.valueOf(500.00),// priceBottom
             "Herrbyxor", // nameBottom
             null, // sizeBottom
             40, // saldoBottom
@@ -36,7 +38,7 @@ public class BottomService {
         Bottom dambyxor = new Bottom(
             2,
             "Dam",
-            "600 SEK",
+            BigDecimal.valueOf(500.00),
             "Dambyxor",
             null,
             80,

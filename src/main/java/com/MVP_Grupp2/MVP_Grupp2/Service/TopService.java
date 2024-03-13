@@ -1,5 +1,7 @@
 package com.MVP_Grupp2.MVP_Grupp2.Service;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +28,7 @@ public class TopService {
         Top herrtop = new Top(
             11, 
             "Herr", 
-            "200", 
+             BigDecimal.valueOf(200.00), 
             "T-shirt Herr", 
             null, 
             150, 
@@ -36,7 +38,7 @@ public class TopService {
         Top damtop = new Top(
             12, 
             "Dam", 
-            "200", 
+            BigDecimal.valueOf(200.00), 
             "T-shirt Dam", 
             null, 
             100, 
