@@ -159,3 +159,48 @@ button:hover {
     left: -20px;
     
 }
+.styleInspirationHeader {
+    position: absolute;
+    width: 801px;
+    height: 53px;
+    left: 520px;
+    top: 131px;
+    font-family: 'Jacques Francois Shadow';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 53px;
+    color: #98e99c;
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.styleInspirationText {
+    position: absolute;
+    width: 1301px;
+    height: 58px;
+    left: 518px;
+    top: 208px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #98e99c;
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.5);
+}
+.link {
+   
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #a8ebc7;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s, transform 0.3s; 
+}
+.link:hover {
+    color: #d5eee1;
+    transform: scale(1.01);
+}
+
+
+

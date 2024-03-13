@@ -51,11 +51,13 @@ productBtn.addEventListener("click", function () {
 orderBtn.addEventListener("click", function () {
     console.log("orderBtn clicked");
     flush();
+    
   
 });
 inspirationBtn.addEventListener("click", function () {
     console.log("inspirationBtn clicked");
     flush();
+    displayInspirationContent();
 });
 homeBtn.addEventListener("click", function () {
     console.log("homeBtn clicked");
@@ -444,4 +446,94 @@ function showWomanProducts() {
                 console.error('Error:', error);
             });
     });
+}
+function displayInspirationContent() {
+    let formattedContent2 = `
+    Modeindustrin har den största miljöpåverkan på världen. Därför är det viktigt att<br> vara medvetet
+    om ursprunget av produkterna man köpa.<br>
+    Med fokus på återanvändning är kvalitet av textila produkter självklart en stor <br>faktor
+    för ett hållbart sätt att konsumera!<br><br>
+
+    Vi vill inte bara sälja kläder, vi garantera även för kvalitet och vill uppmuntra till <br>att skänka bort kläderna
+    till second hand butiker eller till vänner och familj så att våra textila <br>produkter har en lång livscirkel.
+    <br><br>
+    “Slow fashion” är i dagsläget en internationell initiativ och ett temat som innebär att
+    ta<br> sitt ansvar för kommande generarationer på världen.<br><br> 
+    Det finns mycket stöd för den internationella, gröna rörelsen.<br> Följer gärna länkarna för de top 10 av hållbara modeorganisationer och initiativer! Tack !
+    `;
+
+    let content1 = "Kan vi inspirera dig för mer hållbarhet?";
+    let content2 = formattedContent2;
+
+    let pageContentDiv = document.getElementById('pageContentDiv');
+    
+    pageContentDiv.style.display = 'block';
+    document.getElementById('loginContentDiv').style.display = 'none';
+    pageContentDiv.style.width = '1500px';
+    pageContentDiv.style.height = '800px';
+
+    
+    let imageElement = document.createElement('img');
+    imageElement.src = '../bilder/globe.jpg'; 
+    imageElement.style.width = '200px';
+    imageElement.style.height = '200px';
+    imageElement.style.position = 'absolute'; 
+    imageElement.style.top = '150px'; 
+    imageElement.style.left = '250px';
+
+    let linksContainer1 = document.createElement('div');
+    linksContainer1.style.position = 'absolute';
+    linksContainer1.style.bottom = '150px'; 
+    linksContainer1.style.left = '520px'; 
+    linksContainer1.style.width = '50%'; 
+    // linksContainer1.style.textAlign = 'right';
+
+    let linksContainer2 = linksContainer1.cloneNode(); 
+    linksContainer2.style.left = ''; 
+    linksContainer2.style.right = '-100px';
+    // linksContainer2.style.textAlign = 'left';
+
+    let links = [
+        { text: "CSF (Center For Sustainable Fashion)", href: "https://www.sustainable-fashion.com" },
+        { text: "Ellen Mac Arthur Foundation", href: "https://www.ellenmacarthurfoundation.org" },
+        { text: "Fashion For Good", href: "https://fashionforgood.com" },
+        { text: "Fashion Revolution", href: "https://www.fashionrevolution.org" },
+        { text: "Good On You", href: "https://goodonyou.eco" },
+        { text: "Global Fashion Agenda", href: "https://globalfashionagenda.org" },
+        { text: "Slow Factory Foundation", href: "https://slowfactory.earth" },
+        { text: "Cascale", href: "https://cascale.org" },
+        { text: "Textile Exchange", href: "https://textileexchange.org" },
+        { text: "United Nations Alliance for Sustainable Fashion", href: "https://unfashionalliance.org" }
+    ];
+
+    let linksSlice1 = links.slice(0, 5);
+    let linksSlice2 = links.slice(5); 
+
+    createLinks(linksSlice1, linksContainer1); 
+    createLinks(linksSlice2, linksContainer2);
+
+    function createLinks(linksSlice, container) {
+        linksSlice.forEach(link => {
+            let linkElement = document.createElement('a');
+            linkElement.href = link.href;
+            linkElement.textContent = link.text;
+            linkElement.style.display = 'block';
+            linkElement.classList.add('link'); 
+            container.appendChild(linkElement);
+        });
+    }
+
+    let textInspiration1 = document.createElement('span');
+    let textInspiration2 = document.createElement('span');
+    textInspiration1.textContent = content1;
+    textInspiration2.innerHTML = content2;
+    textInspiration1.classList.add('styleInspirationHeader');
+    textInspiration2.classList.add('styleInspirationText');
+
+    
+    pageContentDiv.appendChild(imageElement);
+    pageContentDiv.appendChild(textInspiration1);
+    pageContentDiv.appendChild(textInspiration2);
+    pageContentDiv.appendChild(linksContainer1); 
+    pageContentDiv.appendChild(linksContainer2);
 }
