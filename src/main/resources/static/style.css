@@ -72,6 +72,17 @@ button:hover {
     width: 500px;
 }
 
+#chartContentDiv {
+    background-color: rgba(211, 211, 211, 0.8);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    margin: 20px;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 20px;
+    width: 500px;
+    float: right;
+}
+
 #productContentDiv { 
     background-color: rgba(211, 211, 211, 0.8);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -146,6 +157,5 @@ button:hover {
     position: absolute;
     top: 100px;
     left: -20px;
-    
     
 }
