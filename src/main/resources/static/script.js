@@ -6,19 +6,19 @@ let homeBtn = document.getElementById("homeBtn");
 let chartBtn = document.getElementById("chartBtn");
 let logoutBtn = document.getElementById("logoutBtn");
 let productBtnDiv = document.getElementById("productBtnDiv");
-
-
 let pageContentDiv = document.getElementById("pageContentDiv");
 let startContent = document.getElementById("startContent");
 let loginContentDiv = document.getElementById("loginContentDiv");
 let chartContentDiv = document.getElementById("chartContentDiv");
 let customerNumber = localStorage.getItem("customerNumber");
 let productContentDiv = document.getElementById("productContentDiv");
-
 let startContentText = startContent;
+let productBtnDiv = document.getElementById("productBtnDiv");
+let productContentDiv = document.getElementById("productContentDiv");
 
 if (customerNumber) {
     document.getElementById("chartBtn").style.display = "inline-block";
+    document.getElementById("productBtn").style.display = "inline-block";
     document.getElementById("orderBtn").style.display = "inline-block";
     document.getElementById("logoutBtn").style.display = "inline-block";
     document.getElementById("loginBtn").style.display = "none";
@@ -29,6 +29,7 @@ let buttonContent = chartBtn.innerHTML;
 
 chartBtn.innerHTML = chartNumber + " " + buttonContent;
 
+
 flush();
 pageContentDiv.style.display = "block";
 homeContent();
@@ -36,7 +37,9 @@ homeContent();
 loginBtn.addEventListener("click", function () {
     console.log("loginBtn clicked");
     flush();
+
     document.getElementById("loginContentDiv").style.display = "block";
+
     loginContent();
 });
 
@@ -50,7 +53,7 @@ productBtn.addEventListener("click", function () {
 orderBtn.addEventListener("click", function () {
     console.log("orderBtn clicked");
     flush();
-
+  
 });
 inspirationBtn.addEventListener("click", function () {
     console.log("inspirationBtn clicked");
@@ -59,19 +62,24 @@ inspirationBtn.addEventListener("click", function () {
 homeBtn.addEventListener("click", function () {
     console.log("homeBtn clicked");
     flush();
+  
     document.getElementById("pageContentDiv").style.display = "block";
+
     homeContent();
 });
 chartBtn.addEventListener("click", function () {
     console.log("chartBtn clicked");
+  
     document.getElementById('pageContentDiv').style.display = 'none';
     document.getElementById('loginContentDiv').style.display = 'none';
     document.getElementById("productContentDiv").style.display = "none";
     document.getElementById("productBtnDiv").style.display = "none";
+
     pageContentDiv.innerHTML = "";
     loginContentDiv.innerHTML = "";
     productContentDiv.innerHTML = "";
     productBtnDiv.innerHTML = "";
+  
     if (document.getElementById("chartContentDiv").style.display === "none") {
         flush();
         document.getElementById("pageContentDiv").style.display = "none";
@@ -108,6 +116,7 @@ function flush() {
     document.getElementById("productContentDiv").style.display = "none";
     document.getElementById("productBtnDiv").style.display = "none";
     document.getElementById("chartContentDiv").style.display = "none";
+
 }
 
 function loginContent() {
@@ -212,6 +221,7 @@ function productContent(){
     manBtn.addEventListener("click", function() { 
         console.log("manBtn clicked");
         flush();
+      
         document.getElementById('productContentDiv').style.display = 'block';
         showManProducts();
     });
@@ -219,6 +229,7 @@ function productContent(){
     womanBtn.addEventListener("click", function() { 
         console.log("womanBtn clicked");
         flush();
+      
         document.getElementById('productContentDiv').style.display = 'block';
         showWomanProducts();
     });
