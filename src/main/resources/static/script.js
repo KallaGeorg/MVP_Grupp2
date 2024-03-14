@@ -20,8 +20,7 @@ if (customerNumber) {
     document.getElementById("orderBtn").style.display = "inline-block";
     document.getElementById("logoutBtn").style.display = "inline-block";
     document.getElementById("loginBtn").style.display = "none";
-}
-else {
+} else {
     document.getElementById("chartBtn").style.display = "none";
     document.getElementById("productBtn").style.display = "none";
     document.getElementById("orderBtn").style.display = "none";
@@ -120,6 +119,10 @@ function flush() {
     document.getElementById("productContentDiv").style.display = "none";
     document.getElementById("productBtnDiv").style.display = "none";
     document.getElementById("chartContentDiv").style.display = "none";
+
+    if (checkout != null && checkout.embeddedCheckout.isDestroyed === false) {
+        checkout.destroy("#checkout");
+    }
 }
 
 function loginContent() {
@@ -353,7 +356,7 @@ function chartContent() {
     message.innerHTML = "Inga varor i kundvagnen";
 
     let list = document.createElement("ul");
-    list.setAttribute("id", "cart");  // Lägg till ett id för att kunna hitta elementet senare
+    list.setAttribute("id", "cart"); // Lägg till ett id för att kunna hitta elementet senare
 
     let checkoutBtn = document.createElement("button");
     checkoutBtn.innerHTML = "Kassa";
@@ -398,13 +401,13 @@ function chartContent() {
 
 function displayCart() {
     let cart = new Cart();
-    let cartDiv = document.getElementById('cart');
-    cartDiv.innerHTML = '';  
+    let cartDiv = document.getElementById("cart");
+    cartDiv.innerHTML = "";
 
     let items = cart.listCart();
-    
-    items.forEach(item => {
-        let itemDiv = document.createElement('div');
+
+    items.forEach((item) => {
+        let itemDiv = document.createElement("div");
         itemDiv.className = "itemDiv";
         itemDiv.innerHTML = `
             <p>${item.name}: ${item.price} x ${item.count} = ${item.total}</p>
@@ -413,16 +416,16 @@ function displayCart() {
         cartDiv.appendChild(itemDiv);
 
         // Lägg till en eventlyssnare för varje knapp här
-        let removeButton = itemDiv.querySelector('.remove-button');
+        let removeButton = itemDiv.querySelector(".remove-button");
         removeButton.style.marginLeft = "70px";
         removeButton.className = "formBtns";
-        removeButton.addEventListener('click', () => {
+        removeButton.addEventListener("click", () => {
             cart.removeItemFromCart(item.name);
-            displayCart(); 
+            displayCart();
         });
     });
 
-    let totalDiv = document.createElement('div');
+    let totalDiv = document.createElement("div");
     totalDiv.innerHTML = `<p>Totalt: ${cart.totalCart()}</p>`;
     cartDiv.appendChild(totalDiv);
 }
@@ -448,8 +451,8 @@ function showManProducts() {
                     addToCartBtn.innerText = "Lägg till i kundvagnen";
                     addToCartBtn.style.float = "right";
                     addToCartBtn.className = "formBtns";
-                    addToCartBtn.addEventListener("click", function() {
-                        cart.addItemToCart(product.name, "../bilder/${imageNames[index]}.jpg" , product.price, 1)
+                    addToCartBtn.addEventListener("click", function () {
+                        cart.addItemToCart(product.name, "../bilder/${imageNames[index]}.jpg", product.price, 1);
                     });
                     manProductOutput.appendChild(addToCartBtn);
                 });
@@ -481,8 +484,8 @@ function showWomanProducts() {
                     addToCartBtn.innerText = "Lägg till i kundvagnen";
                     addToCartBtn.style.float = "right";
                     addToCartBtn.className = "formBtns";
-                    addToCartBtn.addEventListener("click", function() {
-                        cart.addItemToCart(product.name, "../bilder/${imageNames[index]}.jpg" , product.price, 1)
+                    addToCartBtn.addEventListener("click", function () {
+                        cart.addItemToCart(product.name, "../bilder/${imageNames[index]}.jpg", product.price, 1);
                     });
                     womanProductOutput.appendChild(addToCartBtn);
                 });

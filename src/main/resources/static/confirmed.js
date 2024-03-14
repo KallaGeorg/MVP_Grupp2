@@ -1,5 +1,5 @@
 let countdown = document.getElementById("countdown");
-countdown.innerHTML = 10;
+countdown.innerHTML = 5;
 
 setInterval(() => {
     countdown.innerHTML = countdown.innerHTML - 1;
