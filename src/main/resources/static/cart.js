@@ -1,6 +1,8 @@
 "use strict";
 
 class Cart {
+
+    
     // Kundvagnen är egentligen bara är en array/lista.
     #cart;
 
@@ -112,7 +114,7 @@ class Cart {
     }
 }
 
-// Skapar ny kundvagn och testar lite.
+/*  // Skapar ny kundvagn och testar lite.
 const cart = new Cart();
 // Funkar
 cart.addItemToCart("Tröja", "bild här", 500, 1);
@@ -128,4 +130,4 @@ cart.setCountForItem("Skor", 50);
 // Funkar
 console.log(cart.totalCount());
 // Funkar
-console.log(cart.listCart());
+console.log(cart.listCart());   */
