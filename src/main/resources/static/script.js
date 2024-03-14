@@ -21,6 +21,13 @@ if (customerNumber) {
     document.getElementById("logoutBtn").style.display = "inline-block";
     document.getElementById("loginBtn").style.display = "none";
 }
+else {
+    document.getElementById("chartBtn").style.display = "none";
+    document.getElementById("productBtn").style.display = "none";
+    document.getElementById("orderBtn").style.display = "none";
+    document.getElementById("logoutBtn").style.display = "none";
+    document.getElementById("loginBtn").style.display = "inline-block";
+}
 let chartNumber = 3;
 
 let buttonContent = chartBtn.innerHTML;
@@ -96,6 +103,7 @@ logoutBtn.addEventListener("click", function () {
     document.getElementById("orderBtn").style.display = "none";
     document.getElementById("logoutBtn").style.display = "none";
     document.getElementById("loginBtn").style.display = "inline-block";
+    document.getElementById("productBtn").style.display = "none";
     flush();
     homeContent();
     document.getElementById("pageContentDiv").style.display = "block";
@@ -189,6 +197,7 @@ function loginContent() {
                     document.getElementById("chartBtn").style.display = "inline-block";
                     document.getElementById("orderBtn").style.display = "inline-block";
                     document.getElementById("logoutBtn").style.display = "inline-block";
+                    document.getElementById("productBtn").style.display = "inline-block";
                     document.getElementById("loginBtn").style.display = "none";
                     loginContentDiv.appendChild(loginSucces);
                 });
