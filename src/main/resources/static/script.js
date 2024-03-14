@@ -27,7 +27,6 @@ let buttonContent = chartBtn.innerHTML;
 
 chartBtn.innerHTML = chartNumber + " " + buttonContent;
 
-
 flush();
 pageContentDiv.style.display = "block";
 homeContent();
@@ -46,13 +45,10 @@ productBtn.addEventListener("click", function () {
     flush();
     document.getElementById("productBtnDiv").style.display = "flow";
     productContent();
-
 });
 orderBtn.addEventListener("click", function () {
     console.log("orderBtn clicked");
     flush();
-    
-  
 });
 inspirationBtn.addEventListener("click", function () {
     console.log("inspirationBtn clicked");
@@ -62,16 +58,16 @@ inspirationBtn.addEventListener("click", function () {
 homeBtn.addEventListener("click", function () {
     console.log("homeBtn clicked");
     flush();
-  
+
     document.getElementById("pageContentDiv").style.display = "block";
 
     homeContent();
 });
 chartBtn.addEventListener("click", function () {
     console.log("chartBtn clicked");
-  
-    document.getElementById('pageContentDiv').style.display = 'none';
-    document.getElementById('loginContentDiv').style.display = 'none';
+
+    document.getElementById("pageContentDiv").style.display = "none";
+    document.getElementById("loginContentDiv").style.display = "none";
     document.getElementById("productContentDiv").style.display = "none";
     document.getElementById("productBtnDiv").style.display = "none";
 
@@ -79,7 +75,7 @@ chartBtn.addEventListener("click", function () {
     loginContentDiv.innerHTML = "";
     productContentDiv.innerHTML = "";
     productBtnDiv.innerHTML = "";
-  
+
     if (document.getElementById("chartContentDiv").style.display === "none") {
         flush();
         document.getElementById("pageContentDiv").style.display = "none";
@@ -111,12 +107,11 @@ function flush() {
     chartContentDiv.innerHTML = "";
     productContentDiv.innerHTML = "";
     productBtnDiv.innerHTML = "";
-    document.getElementById('pageContentDiv').style.display = 'none';
-    document.getElementById('loginContentDiv').style.display = 'none';
+    document.getElementById("pageContentDiv").style.display = "none";
+    document.getElementById("loginContentDiv").style.display = "none";
     document.getElementById("productContentDiv").style.display = "none";
     document.getElementById("productBtnDiv").style.display = "none";
     document.getElementById("chartContentDiv").style.display = "none";
-
 }
 
 function loginContent() {
@@ -203,37 +198,35 @@ function loginContent() {
         });
 }
 
-function productContent(){
-    
-    let manBtn = document.createElement('button');
+function productContent() {
+    let manBtn = document.createElement("button");
     manBtn.innerHTML = "Herr";
     manBtn.style.marginLeft = "40px";
     manBtn.className = "manProductBtns";
 
-    let womanBtn = document.createElement('button');
+    let womanBtn = document.createElement("button");
     womanBtn.innerHTML = "Dam";
     womanBtn.style.marginLeft = "40px";
     womanBtn.className = "womanProductBtns";
-    
+
     productBtnDiv.appendChild(manBtn);
     productBtnDiv.appendChild(womanBtn);
-        
-    manBtn.addEventListener("click", function() { 
+
+    manBtn.addEventListener("click", function () {
         console.log("manBtn clicked");
         flush();
-      
-        document.getElementById('productContentDiv').style.display = 'block';
+
+        document.getElementById("productContentDiv").style.display = "block";
         showManProducts();
     });
 
-    womanBtn.addEventListener("click", function() { 
+    womanBtn.addEventListener("click", function () {
         console.log("womanBtn clicked");
         flush();
-      
-        document.getElementById('productContentDiv').style.display = 'block';
+
+        document.getElementById("productContentDiv").style.display = "block";
         showWomanProducts();
     });
-
 }
 
 function homeContent() {
@@ -381,8 +374,8 @@ function chartContent() {
         flush();
         let checkoutDiv = document.createElement("div");
         checkoutDiv.setAttribute("id", "checkout");
-        console.log(checkoutDiv.getAttribute("id"));
         pageContentDiv.appendChild(checkoutDiv);
+        document.getElementById("pageContentDiv").style.display = "block";
         initializeCheckoutSession();
     });
     cancelBtn.addEventListener("click", () => {
@@ -396,54 +389,50 @@ function chartContent() {
 }
 
 function showManProducts() {
- 
     let productTypes = ["bottom", "top", "shoes"];
     let imageNames = ["herrbyxor", "t-shirt_herr", "herrskor"];
 
-    productTypes.forEach(function(productType, index) {
-
-        fetch('http://localhost:8080/api/products/men/' + productType)
-            .then(response => response.json())
-            .then(products => {
+    productTypes.forEach(function (productType, index) {
+        fetch("http://localhost:8080/api/products/men/" + productType)
+            .then((response) => response.json())
+            .then((products) => {
                 let manProductOutput = document.createElement("div");
                 manProductOutput.className = "manOutput";
-                products.forEach(product => {
+                products.forEach((product) => {
                     manProductOutput.innerHTML += `
                         <p>${product.name}: ${product.price}</p>
                         <img src="../bilder/${imageNames[index]}.jpg" alt="${product.name}" width="200" height="200">
                         
                     `;
                 });
-                document.getElementById('productContentDiv').appendChild(manProductOutput);
+                document.getElementById("productContentDiv").appendChild(manProductOutput);
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error("Error:", error);
             });
     });
 }
 
 function showWomanProducts() {
- 
     let productTypes = ["bottom", "top", "shoes"];
     let imageNames = ["dambyxor", "t-shirt_dam", "damskor"];
 
-    productTypes.forEach(function(productType, index) {
-
-        fetch('http://localhost:8080/api/products/woman/' + productType)
-            .then(response => response.json())
-            .then(products => {
+    productTypes.forEach(function (productType, index) {
+        fetch("http://localhost:8080/api/products/woman/" + productType)
+            .then((response) => response.json())
+            .then((products) => {
                 let womanProductOutput = document.createElement("div");
                 womanProductOutput.className = "womanOutput";
-                products.forEach(product => {
+                products.forEach((product) => {
                     womanProductOutput.innerHTML += `
                         <p>${product.name}: ${product.price}</p>
                         <img src="../bilder/${imageNames[index]}.jpg" alt="${product.name}" width="200" height="200">
                     `;
                 });
-                document.getElementById('productContentDiv').appendChild(womanProductOutput);
+                document.getElementById("productContentDiv").appendChild(womanProductOutput);
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error("Error:", error);
             });
     });
 }
@@ -465,32 +454,31 @@ function displayInspirationContent() {
     let content1 = "Kan vi inspirera dig för mer hållbarhet?";
     let content2 = formattedContent2;
 
-    let pageContentDiv = document.getElementById('pageContentDiv');
-    
-    pageContentDiv.style.display = 'block';
-    document.getElementById('loginContentDiv').style.display = 'none';
-    pageContentDiv.style.width = '1500px';
-    pageContentDiv.style.height = '800px';
+    let pageContentDiv = document.getElementById("pageContentDiv");
 
-    
-    let imageElement = document.createElement('img');
-    imageElement.src = '../bilder/globe.jpg'; 
-    imageElement.style.width = '200px';
-    imageElement.style.height = '200px';
-    imageElement.style.position = 'absolute'; 
-    imageElement.style.top = '150px'; 
-    imageElement.style.left = '250px';
+    pageContentDiv.style.display = "block";
+    document.getElementById("loginContentDiv").style.display = "none";
+    pageContentDiv.style.width = "1500px";
+    pageContentDiv.style.height = "800px";
 
-    let linksContainer1 = document.createElement('div');
-    linksContainer1.style.position = 'absolute';
-    linksContainer1.style.bottom = '150px'; 
-    linksContainer1.style.left = '520px'; 
-    linksContainer1.style.width = '50%'; 
+    let imageElement = document.createElement("img");
+    imageElement.src = "../bilder/globe.jpg";
+    imageElement.style.width = "200px";
+    imageElement.style.height = "200px";
+    imageElement.style.position = "absolute";
+    imageElement.style.top = "150px";
+    imageElement.style.left = "250px";
+
+    let linksContainer1 = document.createElement("div");
+    linksContainer1.style.position = "absolute";
+    linksContainer1.style.bottom = "150px";
+    linksContainer1.style.left = "520px";
+    linksContainer1.style.width = "50%";
     // linksContainer1.style.textAlign = 'right';
 
-    let linksContainer2 = linksContainer1.cloneNode(); 
-    linksContainer2.style.left = ''; 
-    linksContainer2.style.right = '-100px';
+    let linksContainer2 = linksContainer1.cloneNode();
+    linksContainer2.style.left = "";
+    linksContainer2.style.right = "-100px";
     // linksContainer2.style.textAlign = 'left';
 
     let links = [
@@ -503,37 +491,36 @@ function displayInspirationContent() {
         { text: "Slow Factory Foundation", href: "https://slowfactory.earth" },
         { text: "Cascale", href: "https://cascale.org" },
         { text: "Textile Exchange", href: "https://textileexchange.org" },
-        { text: "United Nations Alliance for Sustainable Fashion", href: "https://unfashionalliance.org" }
+        { text: "United Nations Alliance for Sustainable Fashion", href: "https://unfashionalliance.org" },
     ];
 
     let linksSlice1 = links.slice(0, 5);
-    let linksSlice2 = links.slice(5); 
+    let linksSlice2 = links.slice(5);
 
-    createLinks(linksSlice1, linksContainer1); 
+    createLinks(linksSlice1, linksContainer1);
     createLinks(linksSlice2, linksContainer2);
 
     function createLinks(linksSlice, container) {
-        linksSlice.forEach(link => {
-            let linkElement = document.createElement('a');
+        linksSlice.forEach((link) => {
+            let linkElement = document.createElement("a");
             linkElement.href = link.href;
             linkElement.textContent = link.text;
-            linkElement.style.display = 'block';
-            linkElement.classList.add('link'); 
+            linkElement.style.display = "block";
+            linkElement.classList.add("link");
             container.appendChild(linkElement);
         });
     }
 
-    let textInspiration1 = document.createElement('span');
-    let textInspiration2 = document.createElement('span');
+    let textInspiration1 = document.createElement("span");
+    let textInspiration2 = document.createElement("span");
     textInspiration1.textContent = content1;
     textInspiration2.innerHTML = content2;
-    textInspiration1.classList.add('styleInspirationHeader');
-    textInspiration2.classList.add('styleInspirationText');
+    textInspiration1.classList.add("styleInspirationHeader");
+    textInspiration2.classList.add("styleInspirationText");
 
-    
     pageContentDiv.appendChild(imageElement);
     pageContentDiv.appendChild(textInspiration1);
     pageContentDiv.appendChild(textInspiration2);
-    pageContentDiv.appendChild(linksContainer1); 
+    pageContentDiv.appendChild(linksContainer1);
     pageContentDiv.appendChild(linksContainer2);
 }
