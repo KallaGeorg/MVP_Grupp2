@@ -344,6 +344,7 @@ function chartContent() {
     message.innerHTML = "Inga varor i kundvagnen";
 
     let list = document.createElement("ul");
+    list.setAttribute("id", "cart");  // Lägg till ett id för att kunna hitta elementet senare
 
     let checkoutBtn = document.createElement("button");
     checkoutBtn.innerHTML = "Kassa";
@@ -359,12 +360,8 @@ function chartContent() {
     cancelBtn.style.float = "right";
     cancelBtn.className = "formBtns";
 
-    if (list.childNodes.length == 0) {
-        chartContentDiv.appendChild(message);
-    } else {
-        chartContentDiv.appendChild(list);
-    }
-
+    chartContentDiv.appendChild(message);
+    chartContentDiv.appendChild(list);
     chartContentDiv.appendChild(checkoutBtn);
     chartContentDiv.appendChild(emptyBtn);
     chartContentDiv.appendChild(cancelBtn);
@@ -386,11 +383,45 @@ function chartContent() {
         document.getElementById("chartContentDiv").style.display = "none";
         homeContent();
     });
+
+    displayCart();
+}
+
+function displayCart() {
+    let cart = new Cart();
+    let cartDiv = document.getElementById('cart');
+    cartDiv.innerHTML = '';  
+
+    let items = cart.listCart();
+    
+    items.forEach(item => {
+        let itemDiv = document.createElement('div');
+        itemDiv.className = "itemDiv";
+        itemDiv.innerHTML = `
+            <p>${item.name}: ${item.price} x ${item.count} = ${item.total}</p>
+            <button class="remove-button">Ta bort en</button>
+        `;
+        cartDiv.appendChild(itemDiv);
+
+        // Lägg till en eventlyssnare för varje knapp här
+        let removeButton = itemDiv.querySelector('.remove-button');
+        removeButton.style.marginLeft = "70px";
+        removeButton.className = "formBtns";
+        removeButton.addEventListener('click', () => {
+            cart.removeItemFromCart(item.name);
+            displayCart(); 
+        });
+    });
+
+    let totalDiv = document.createElement('div');
+    totalDiv.innerHTML = `<p>Totalt: ${cart.totalCart()}</p>`;
+    cartDiv.appendChild(totalDiv);
 }
 
 function showManProducts() {
     let productTypes = ["bottom", "top", "shoes"];
     let imageNames = ["herrbyxor", "t-shirt_herr", "herrskor"];
+    let cart = new Cart();
 
     productTypes.forEach(function (productType, index) {
         fetch("http://localhost:8080/api/products/men/" + productType)
@@ -404,6 +435,14 @@ function showManProducts() {
                         <img src="../bilder/${imageNames[index]}.jpg" alt="${product.name}" width="200" height="200">
                         
                     `;
+                    let addToCartBtn = document.createElement("button");
+                    addToCartBtn.innerText = "Lägg till i kundvagnen";
+                    addToCartBtn.style.float = "right";
+                    addToCartBtn.className = "formBtns";
+                    addToCartBtn.addEventListener("click", function() {
+                        cart.addItemToCart(product.name, "../bilder/${imageNames[index]}.jpg" , product.price, 1)
+                    });
+                    manProductOutput.appendChild(addToCartBtn);
                 });
                 document.getElementById("productContentDiv").appendChild(manProductOutput);
             })
@@ -416,6 +455,7 @@ function showManProducts() {
 function showWomanProducts() {
     let productTypes = ["bottom", "top", "shoes"];
     let imageNames = ["dambyxor", "t-shirt_dam", "damskor"];
+    let cart = new Cart();
 
     productTypes.forEach(function (productType, index) {
         fetch("http://localhost:8080/api/products/woman/" + productType)
@@ -428,6 +468,14 @@ function showWomanProducts() {
                         <p>${product.name}: ${product.price}</p>
                         <img src="../bilder/${imageNames[index]}.jpg" alt="${product.name}" width="200" height="200">
                     `;
+                    let addToCartBtn = document.createElement("button");
+                    addToCartBtn.innerText = "Lägg till i kundvagnen";
+                    addToCartBtn.style.float = "right";
+                    addToCartBtn.className = "formBtns";
+                    addToCartBtn.addEventListener("click", function() {
+                        cart.addItemToCart(product.name, "../bilder/${imageNames[index]}.jpg" , product.price, 1)
+                    });
+                    womanProductOutput.appendChild(addToCartBtn);
                 });
                 document.getElementById("productContentDiv").appendChild(womanProductOutput);
             })
@@ -436,6 +484,7 @@ function showWomanProducts() {
             });
     });
 }
+
 function displayInspirationContent() {
     let formattedContent2 = `
     Modeindustrin har den största miljöpåverkan på världen. Därför är det viktigt att<br> vara medvetet
