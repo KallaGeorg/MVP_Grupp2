@@ -16,20 +16,20 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @RestController
 @Validated
 public class CustomerController {
 
     private final CustomerService customerService;
-    
+
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
     @PostMapping("/customer/register")
     public Customer registerCustomer(@Valid @RequestBody Customer customer) {
-        return customerService.registerCustomer(customer.getName(), customer.getAdress(), customer.getEmail(), customer.getPassword(), customer.getPayment());
+        return customerService.registerCustomer(customer.getName(), customer.getAdress(), customer.getEmail(),
+                customer.getPassword(), customer.getPayment());
     }
 
     @PostMapping("/customer/login")
@@ -51,7 +51,5 @@ public class CustomerController {
     public Iterable<Customer> getCustomers() {
         return customerService.getAllCustomers();
     }
-    
-    
-}
 
+}
