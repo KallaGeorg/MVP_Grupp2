@@ -4,6 +4,10 @@ let checkout = null;
 async function initializeCheckoutSession() {
     const response = await fetch("http://localhost:8080/create-checkout-session", {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: localStorage.getItem("cart"),
     });
     const { clientSecret } = await response.json();
     checkout = await stripe.initEmbeddedCheckout({
