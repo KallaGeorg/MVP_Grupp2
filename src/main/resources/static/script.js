@@ -245,6 +245,8 @@ function homeContent() {
     let homeContent = document.createElement("h1");
     homeContent.innerHTML = startContentText.innerText;
     pageContentDiv.appendChild(homeContent);
+    pageContentDiv.style.width = "900px";
+    pageContentDiv.style.height = "150px";
 }
 
 function showRegisterForm() {
@@ -443,13 +445,15 @@ function showManProducts() {
                 manProductOutput.className = "manOutput";
                 products.forEach((product) => {
                     manProductOutput.innerHTML += `
-                        <p>${product.name}: ${product.price}</p>
+                        <p>${product.name}: ${product.price} kr</p>
                         <img src="../bilder/${imageNames[index]}.jpg" alt="${product.name}" width="200" height="200">
                         
                     `;
                     let addToCartBtn = document.createElement("button");
                     addToCartBtn.innerText = "Lägg till i kundvagnen";
                     addToCartBtn.style.float = "right";
+                    addToCartBtn.style.width = "250px";
+                    addToCartBtn.style.height = "50px";
                     addToCartBtn.className = "formBtns";
                     addToCartBtn.addEventListener("click", function () {
                         cart.addItemToCart(product.name, "../bilder/${imageNames[index]}.jpg", product.price, 1);
@@ -477,12 +481,14 @@ function showWomanProducts() {
                 womanProductOutput.className = "womanOutput";
                 products.forEach((product) => {
                     womanProductOutput.innerHTML += `
-                        <p>${product.name}: ${product.price}</p>
+                        <p>${product.name}: ${product.price} kr</p>
                         <img src="../bilder/${imageNames[index]}.jpg" alt="${product.name}" width="200" height="200">
                     `;
                     let addToCartBtn = document.createElement("button");
                     addToCartBtn.innerText = "Lägg till i kundvagnen";
                     addToCartBtn.style.float = "right";
+                    addToCartBtn.style.width = "250px";
+                    addToCartBtn.style.height = "50px";
                     addToCartBtn.className = "formBtns";
                     addToCartBtn.addEventListener("click", function () {
                         cart.addItemToCart(product.name, "../bilder/${imageNames[index]}.jpg", product.price, 1);
@@ -520,7 +526,7 @@ function displayInspirationContent() {
     pageContentDiv.style.display = "block";
     document.getElementById("loginContentDiv").style.display = "none";
     pageContentDiv.style.width = "1500px";
-    pageContentDiv.style.height = "800px";
+    pageContentDiv.style.height = "740px";
 
     let imageElement = document.createElement("img");
     imageElement.src = "../bilder/globe.jpg";
@@ -532,7 +538,7 @@ function displayInspirationContent() {
 
     let linksContainer1 = document.createElement("div");
     linksContainer1.style.position = "absolute";
-    linksContainer1.style.bottom = "150px";
+    linksContainer1.style.bottom = "100px";
     linksContainer1.style.left = "520px";
     linksContainer1.style.width = "50%";
     // linksContainer1.style.textAlign = 'right';
