@@ -86,7 +86,7 @@ chartBtn.addEventListener("click", function () {
         flush();
         document.getElementById("pageContentDiv").style.display = "none";
         document.getElementById("loginContentDiv").style.display = "none";
-        document.getElementById("chartContentDiv").style.display = "block";
+        document.getElementById("chartContentDiv").style.display = "flow";
         chartContent();
     } else {
         flush();
@@ -355,7 +355,7 @@ function showRegisterForm() {
 
 function chartContent() {
     let message = document.createElement("h3");
-    message.innerHTML = "Inga varor i kundvagnen";
+    message.innerHTML = "Här är kundvagnen";
 
     let list = document.createElement("ul");
     list.setAttribute("id", "cart"); // Lägg till ett id för att kunna hitta elementet senare
@@ -363,11 +363,13 @@ function chartContent() {
     let checkoutBtn = document.createElement("button");
     checkoutBtn.innerHTML = "Kassa";
     checkoutBtn.className = "formBtns";
+    checkoutBtn.style.display = "none"; // Gör knappen osynlig till en början
 
     let emptyBtn = document.createElement("button");
     emptyBtn.innerHTML = "Rensa";
-    emptyBtn.style.marginLeft = "70px";
-    emptyBtn.className = "formBtns";
+    emptyBtn.style.float = "right";
+    emptyBtn.className = "emptyBtn";
+    emptyBtn.style.display = "none"; // Gör knappen osynlig till en början
 
     let cancelBtn = document.createElement("button");
     cancelBtn.innerHTML = "Avbryt";
@@ -376,19 +378,10 @@ function chartContent() {
 
     chartContentDiv.appendChild(message);
     chartContentDiv.appendChild(list);
-    chartContentDiv.appendChild(checkoutBtn);
     chartContentDiv.appendChild(emptyBtn);
+    chartContentDiv.appendChild(checkoutBtn);
     chartContentDiv.appendChild(cancelBtn);
 
-    checkoutBtn.addEventListener("click", () => {
-        console.log("checkoutBtn clicked");
-        flush();
-        let checkoutDiv = document.createElement("div");
-        checkoutDiv.setAttribute("id", "checkout");
-        pageContentDiv.appendChild(checkoutDiv);
-        document.getElementById("pageContentDiv").style.display = "block";
-        initializeCheckoutSession();
-    });
     cancelBtn.addEventListener("click", () => {
         console.log("cancelBtn clicked");
         flush();
@@ -404,33 +397,63 @@ function chartContent() {
 function displayCart() {
     let cart = new Cart();
     let cartDiv = document.getElementById("cart");
+    cartDiv.className = "cart";
     cartDiv.innerHTML = "";
 
     let items = cart.listCart();
+    let checkoutBtn = document.querySelector("#chartContentDiv button:nth-child(4)");
+    let emptyBtn = document.querySelector("#chartContentDiv button:nth-child(3)");
+    checkoutBtn.className = "checkoutBtn";
+    emptyBtn.className = "emptyBtn";
 
-    items.forEach((item) => {
-        let itemDiv = document.createElement("div");
-        itemDiv.className = "itemDiv";
-        itemDiv.innerHTML = `
-            <p>${item.name}: ${item.price} x ${item.count} = ${item.total}</p>
-            <button class="remove-button">Ta bort en</button>
-        `;
-        cartDiv.appendChild(itemDiv);
+    if (items.length === 0) {
+        cartDiv.innerHTML = "Kundvagnen är tom!";
+        checkoutBtn.style.display = "none";
+        emptyBtn.style.display = "none";
+    } else {
+        emptyBtn.style.display = "flow";
+        checkoutBtn.style.display = "flow";
 
-        // Lägg till en eventlyssnare för varje knapp här
-        let removeButton = itemDiv.querySelector(".remove-button");
-        removeButton.style.marginLeft = "70px";
-        removeButton.className = "formBtns";
-        removeButton.addEventListener("click", () => {
-            cart.removeItemFromCart(item.name);
-            displayCart();
+        items.forEach((item) => {
+            let itemDiv = document.createElement("div");
+            itemDiv.className = "itemDiv";
+            itemDiv.innerHTML = `
+                <img src="../bilder/${item.image}" alt="${item.name}" width="70" height="70">
+                <p> ${item.count}st ${item.name}: ${item.price} kr</p>
+                <button class="removeBtn">Ta bort</button>
+            `;
+            cartDiv.append(itemDiv);
+        
+            let removeButton = itemDiv.querySelector(".removeBtn");
+            removeButton.style.marginLeft = "70px";
+            removeButton.className = "removeBtn";
+            removeButton.addEventListener("click", () => {
+                cart.removeItemFromCart(item.name);
+                displayCart();
+            });
         });
+
+        let totalDiv = document.createElement("div");
+        totalDiv.innerHTML = `<p>Totalt: ${cart.totalCart()} kr</p>`;
+        cartDiv.appendChild(totalDiv);
+    }
+
+    emptyBtn.addEventListener("click", () => {
+        cart.clearCart();
+        displayCart();
     });
 
-    let totalDiv = document.createElement("div");
-    totalDiv.innerHTML = `<p>Totalt: ${cart.totalCart()}</p>`;
-    cartDiv.appendChild(totalDiv);
+    checkoutBtn.addEventListener("click", () => {
+        console.log("checkoutBtn clicked");
+        flush();
+        let checkoutDiv = document.createElement("div");
+        checkoutDiv.setAttribute("id", "checkout");
+        pageContentDiv.appendChild(checkoutDiv);
+        document.getElementById("pageContentDiv").style.display = "block";
+        initializeCheckoutSession();
+    });
 }
+
 
 function showManProducts() {
     let productTypes = ["bottom", "top", "shoes"];
@@ -456,7 +479,7 @@ function showManProducts() {
                     addToCartBtn.style.height = "50px";
                     addToCartBtn.className = "formBtns";
                     addToCartBtn.addEventListener("click", function () {
-                        cart.addItemToCart(product.name, "../bilder/${imageNames[index]}.jpg", product.price, 1);
+                        cart.addItemToCart(product.name, "../bilder/" + imageNames[index] + ".jpg", product.price, 1, product.stripeProductId);
                     });
                     manProductOutput.appendChild(addToCartBtn);
                 });
@@ -491,7 +514,7 @@ function showWomanProducts() {
                     addToCartBtn.style.height = "50px";
                     addToCartBtn.className = "formBtns";
                     addToCartBtn.addEventListener("click", function () {
-                        cart.addItemToCart(product.name, "../bilder/${imageNames[index]}.jpg", product.price, 1);
+                        cart.addItemToCart(product.name, "../bilder/" + imageNames[index] + ".jpg", product.price, 1, product.stripeProductId);
                     });
                     womanProductOutput.appendChild(addToCartBtn);
                 });

@@ -14,16 +14,38 @@ public class CheckoutController {
     @PostMapping("/create-checkout-session")
     @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
     public Map<String, String> createCheckoutSession(@RequestBody List<Item> cart) {
-        Stripe.apiKey = "sk_test_51OmWP0DYlwtrgVcMUgWLNGfpXVs8IHt2nJHp4g5vRZKIvmIIWGUS1uYMjeIDl1BNVZQLC4ryedpIJ4cA4AFeyRRc003bsWz612";
+        // Kontrollera att varukorgen inte är tom
+        if (cart == null || cart.isEmpty()) {
+            System.out.println("Varukorgen är tom.");
+            return null;  // Eller någon annan lämplig åtgärd
+        }
+
+        Stripe.apiKey = "sk_test_51OqXrwITRkRLeIiFdqEOThrTuR8xjni3gObNCtcLUI2MuJ9zTxh5IqWVYGlmxxh8Smmaphdj7BEMnsSik1w8QARq0060TSlul9";
         List<LineItem> lineItems = new ArrayList<>();
         for (Item item : cart) {
-            lineItems.add(addProduct(
-                item.getName(),
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmmA0rmPVNNxzgIVKhml78459yH03aSZqKgsFhOc0X01v9BkQaywliXY9KJB-aiXiyjx8&usqp=CAU",
-                item.getPrice(),
-                item.getCount()));
+            String stripeProductId = item.getStripeProductId();
+            // Kontrollera att produkt-ID:t är giltigt
+            if (stripeProductId != null && !stripeProductId.isEmpty()) {
+                try {
+                    com.stripe.model.Product stripeProduct = com.stripe.model.Product.retrieve(item.getStripeProductId());
+                    String name = stripeProduct.getName();
+                    String imagePath = stripeProduct.getImages().get(0);  // Hämta den första bilden
+                    Long price = item.getPrice();  // Antag att priset fortfarande kommer från din `Item`
+                    lineItems.add(addProduct(name, imagePath, price, item.getCount()));
+                } catch (Exception e) {
+                    System.out.println("Fel: " + e.getMessage());
+                }
+            } else {
+                System.out.println("Ogiltig produkt-ID: " + stripeProductId);
+            }
         }
-                                
+
+        // Kontrollera att lineItems inte är tom
+        if (lineItems.isEmpty()) {
+            System.out.println("Inga produkter att lägga till i kassan.");
+            return null;  // Eller någon annan lämplig åtgärd
+        }
+
         SessionCreateParams params = SessionCreateParams.builder()
                 .setUiMode(SessionCreateParams.UiMode.EMBEDDED)
                 .setMode(SessionCreateParams.Mode.PAYMENT)

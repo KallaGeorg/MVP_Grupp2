@@ -27,6 +27,8 @@ public class Top {
     private String rating;
     @Column(name="comment")
     private String comment;
+    @Column(name="stripeProductId")
+    private String stripeProductId;
     
     
 
@@ -36,7 +38,7 @@ public class Top {
 
 
     public Top(int article_number, String gender, BigDecimal price, String name, String size, int saldo, String rating,
-            String comment) {
+            String comment, String stripeProductId) {
         this.article_number = article_number;
         this.gender = gender;
         this.price = price;
@@ -45,6 +47,7 @@ public class Top {
         this.saldo = saldo;
         this.rating = rating;
         this.comment = comment;
+        this.stripeProductId = stripeProductId;
     }
 
 
@@ -136,6 +139,16 @@ public class Top {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+
+    public String getStripeProductId() {
+        return stripeProductId;
+    }
+
+
+    public void setStripeProductId(String stripeProductId) {
+        this.stripeProductId = stripeProductId;
     }
     
  

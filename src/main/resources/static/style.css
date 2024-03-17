@@ -106,6 +106,50 @@ button {
     height: 150px;
 }
 
+.itemDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.removeBtn{
+    background-color: rgba(2, 225, 2, 0.848);
+    color: rgb(0, 0, 0);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    height: 35px;
+    width: 100px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 5px;
+}
+
+.emptyBtn{
+    background-color: rgba(2, 225, 2, 0.848);
+    color: rgb(0, 0, 0);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    height: 40px;
+    width: 120px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 5px;
+    place-content: right;
+    
+}
+
+.checkoutBtn{
+    background-color: rgba(2, 225, 2, 0.848);
+    color: rgb(0, 0, 0);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    height: 40px;
+    width: 120px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 0px;
+}
+
 .formBtns{
     background-color: rgba(2, 225, 2, 0.848);
     color: rgb(0, 0, 0);
@@ -202,5 +246,9 @@ button {
     transform: scale(1.01);
 }
 
-
+ul {
+    font-size: 23px;
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    display: contents;
+}
 

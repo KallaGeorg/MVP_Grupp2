@@ -33,7 +33,8 @@ public class BottomService {
             null, // sizeBottom
             40, // saldoBottom
             null, // ratingBottom
-            null // commentBottom
+            null, // commentBottom
+            "prod_PggZTeD4aGtVLG"
         );
         Bottom dambyxor = new Bottom(
             2,
@@ -43,7 +44,8 @@ public class BottomService {
             null,
             80,
             null,
-            null
+            null, 
+            "prod_PggdaMmdWB5kj3"
         );
 
         bottomRepository.save(herrbyxor);

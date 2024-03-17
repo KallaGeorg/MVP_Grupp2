@@ -7,6 +7,7 @@ class Cart {
     #cart;
 
     constructor() {
+        this.items = [];
         this.#cart = [];
         // Har vi några produkter i localStorage när scriptet läses in? Då lägger vi till produkterna i listan.
         if (localStorage.getItem("cart") != null) {
@@ -22,18 +23,24 @@ class Cart {
     // Hämtar kundvagnen från localstorage.
     loadCart() {
         this.#cart = JSON.parse(localStorage.getItem("cart"));
+        // Logga ut stripeProductId för varje objekt i varukorgen
+        for (let item of this.#cart) {
+            console.log(item.name + ": " + item.stripeProductId);
+        }
     }
 
     // Lägger till en vara till varukorgen.
-    addItemToCart(name, image, price, count) {
+    addItemToCart(name, image, price, count, stripeProductId) {
         for (let item in this.#cart) {
             if (this.#cart[item].name === name) {
                 this.#cart[item].count++;
+                this.#cart[item].stripeProductId = stripeProductId;
+                this.#cart[item].image = image;
                 this.saveCart();
                 return;
             }
         }
-        this.#cart.push(new Item(name, image, price, count));
+        this.#cart.push(new Item(name, image, price, count, stripeProductId));
         this.saveCart();
     }
 

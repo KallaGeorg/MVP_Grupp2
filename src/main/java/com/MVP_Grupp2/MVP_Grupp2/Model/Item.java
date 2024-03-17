@@ -5,15 +5,17 @@ public class Item {
     private String image;
     private Long price;
     private Long count;
+    private String stripeProductId;
 
     public Item() {
     };
 
-    public Item(String name, String image, Long price, Long count) {
+    public Item(String name, String image, Long price, Long count, String stripeProductId) {
         this.name = name;
         this.image = image;
         this.price = price;
         this.count = count;
+        this.stripeProductId = stripeProductId;
     }
 
     public String getName() {
@@ -47,4 +49,14 @@ public class Item {
     public void setCount(Long count) {
         this.count = count;
     }
+
+    public String getStripeProductId() {
+        return stripeProductId;
+    }
+
+    public void setStripeProductId(String stripeProductId) {
+        this.stripeProductId = stripeProductId;
+    }
+
+
 }

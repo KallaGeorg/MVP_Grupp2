@@ -33,7 +33,8 @@ public class TopService {
             null, 
             150, 
             null, 
-            null
+            null, 
+            "prod_PgfvbKaiXLlcUW"
         );
         Top damtop = new Top(
             12, 
@@ -43,7 +44,8 @@ public class TopService {
             null, 
             100, 
             null, 
-            null
+            null, 
+            "prod_Pk14FiJJ27CW3w"
         );
 
         topRepository.save(herrtop);
