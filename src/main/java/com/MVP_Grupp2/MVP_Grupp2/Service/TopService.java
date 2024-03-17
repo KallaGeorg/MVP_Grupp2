@@ -28,7 +28,7 @@ public class TopService {
         Top herrtop = new Top(
             11, 
             "Herr", 
-             BigDecimal.valueOf(200.00), 
+             BigDecimal.valueOf(150.00), 
             "T-shirt Herr", 
             null, 
             150, 
@@ -39,7 +39,7 @@ public class TopService {
         Top damtop = new Top(
             12, 
             "Dam", 
-            BigDecimal.valueOf(200.00), 
+            BigDecimal.valueOf(150.00), 
             "T-shirt Dam", 
             null, 
             100, 
