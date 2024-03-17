@@ -31,7 +31,10 @@ public class CheckoutController {
                     String name = stripeProduct.getName();
                     String imagePath = stripeProduct.getImages().get(0);  // Hämta den första bilden
                     Long price = item.getPrice();  // Antag att priset fortfarande kommer från din `Item`
-                    lineItems.add(addProduct(name, imagePath, price, item.getCount()));
+
+                    // Skapa en ny LineItem för varje produkt
+                    LineItem newLineItem = addProduct(name, imagePath, price, item.getCount());
+                    lineItems.add(newLineItem);
                 } catch (Exception e) {
                     System.out.println("Fel: " + e.getMessage());
                 }
@@ -50,8 +53,7 @@ public class CheckoutController {
                 .setUiMode(SessionCreateParams.UiMode.EMBEDDED)
                 .setMode(SessionCreateParams.Mode.PAYMENT)
                 .setReturnUrl("http://127.0.0.1:5500/MVP_Grupp2/src/main/resources/templates/confirmed.html")
-                .addAllLineItem(
-                        lineItems)
+                .addAllLineItem(lineItems)
                 .build();
 
         Map<String, String> map = new HashMap<>();

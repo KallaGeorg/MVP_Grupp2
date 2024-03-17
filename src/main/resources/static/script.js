@@ -120,9 +120,9 @@ function flush() {
     document.getElementById("productBtnDiv").style.display = "none";
     document.getElementById("chartContentDiv").style.display = "none";
 
-    if (checkout != null && checkout.embeddedCheckout.isDestroyed === false) {
+   /* if (checkout != null && checkout.embeddedCheckout.isDestroyed === false) {
         checkout.destroy("#checkout");
-    }
+    }       */
 }
 
 function loginContent() {

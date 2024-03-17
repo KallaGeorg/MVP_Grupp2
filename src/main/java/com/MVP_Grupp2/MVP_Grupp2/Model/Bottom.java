@@ -29,14 +29,10 @@ public class Bottom {
     private String comment;
     @Column(name = "stripeProductId")
     private String stripeProductId;
-   
     
-
     public Bottom() {
     }
     
-
-
     public Bottom(int article_number, String gender, BigDecimal price, String name, String size, int saldo,
             String rating, String comment, String stripeProductId) {
         this.article_number = article_number;
@@ -67,7 +63,6 @@ public class Bottom {
         this.gender = gender;
     }
 
-  
 
     public String getName() {
         return name;
@@ -111,7 +106,6 @@ public class Bottom {
 
    
 
-
     public int getArticle_number() {
         return article_number;
     }
@@ -122,25 +116,9 @@ public class Bottom {
     }
 
 
-
-
-
-
-
-
-
-
     public BigDecimal getPrice() {
         return price;
     }
-
-
-
-
-
-
-
-
 
 
     public void setPrice(BigDecimal price) {

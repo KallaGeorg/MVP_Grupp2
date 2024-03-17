@@ -29,7 +29,7 @@ public class ShoesService {
         Shoes herrshoes = new Shoes(
             21, 
             "Herr", 
-            BigDecimal.valueOf(800.00), 
+            BigDecimal.valueOf(1000.00), 
             "Herrskor", 
             null, 
             60, 
@@ -40,7 +40,7 @@ public class ShoesService {
         Shoes damshoes = new Shoes(
             22, 
             "Dam", 
-            BigDecimal.valueOf(700.00), 
+            BigDecimal.valueOf(1000.00), 
             "Damskor", 
             null, 
             60, 

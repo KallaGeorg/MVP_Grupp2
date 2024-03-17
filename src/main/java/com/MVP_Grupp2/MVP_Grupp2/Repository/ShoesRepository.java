@@ -1,6 +1,5 @@
 package com.MVP_Grupp2.MVP_Grupp2.Repository;
 
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
