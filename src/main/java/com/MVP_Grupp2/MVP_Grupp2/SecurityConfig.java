@@ -5,16 +5,33 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @SuppressWarnings("deprecation")
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .anyRequest().permitAll() // All other paths require authentication
-            .and().csrf().disable(); // Disable CSRF
+        http
+            .authorizeRequests((authorize) -> authorize
+                .requestMatchers("/customer/register").permitAll()
+                .requestMatchers("/customer/login").permitAll()
+                .requestMatchers("/customer/{customerNumber}").permitAll()
+                .requestMatchers("/api/products/men/bottom").permitAll()
+                .requestMatchers("/api/products/woman/bottom").permitAll()
+                .requestMatchers("/api/products/men/top").permitAll()
+                .requestMatchers("/api/products/woman/top").permitAll()
+                .requestMatchers("/api/products/woman/shoes").permitAll()
+                .requestMatchers("/api/products/men/shoes").permitAll()
+                .requestMatchers("/create-checkout-session").permitAll()
+                .anyRequest().authenticated()
+
+            )
+            .httpBasic(withDefaults())
+            .cors(withDefaults())
+            .csrf((csrf) -> csrf.disable());
         return http.build();
     }
 }
