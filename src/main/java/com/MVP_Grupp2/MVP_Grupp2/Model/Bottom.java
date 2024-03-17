@@ -29,14 +29,10 @@ public class Bottom {
     private String comment;
     @Column(name = "stripeProductId")
     private String stripeProductId;
-    @Column(name = "stripeProduct")
-    private String stripeProduct;
     
-
     public Bottom() {
     }
     
-
     public Bottom(int article_number, String gender, BigDecimal price, String name, String size, int saldo,
             String rating, String comment, String stripeProductId) {
         this.article_number = article_number;
