@@ -374,7 +374,7 @@ function chartContent() {
     let cancelBtn = document.createElement("button");
     cancelBtn.innerHTML = "Avbryt";
     cancelBtn.style.float = "right";
-    cancelBtn.className = "formBtns";
+    cancelBtn.className = "cancelBtn";
 
     chartContentDiv.appendChild(message);
     chartContentDiv.appendChild(list);

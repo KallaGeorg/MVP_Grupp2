@@ -122,9 +122,45 @@ button {
     cursor: pointer;
     font-size: 20px;
     padding-left: 5px;
+    transition-duration: 0.4s;
+}
+
+.removeBtn:hover {
+    background-color: rgb(97, 233, 126);
+}
+
+.removeBtn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateX(5px);;
 }
 
 .emptyBtn{
+    background-color: rgba(2, 225, 2, 0.848);
+    color: rgb(0, 0, 0);
+    text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
+    height: 35px;
+    width: 100px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 5px;
+    place-content: right;
+    transition-duration: 0.4s;
+    
+}
+
+.emptyBtn:hover {
+    background-color: rgb(97, 233, 126);
+}
+
+.emptyBtn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateX(5px);
+}
+
+.cancelBtn {
     background-color: rgba(2, 225, 2, 0.848);
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -133,10 +169,20 @@ button {
     border-radius: 20px;
     cursor: pointer;
     font-size: 20px;
-    padding-left: 5px;
-    place-content: right;
-    
+    padding-left: 0px;
+    transition-duration: 0.4s;
 }
+
+.cancelBtn:hover {
+    background-color: rgb(97, 233, 126);
+}
+
+.cancelBtn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateX(5px);
+}
+
 
 .checkoutBtn{
     background-color: rgba(2, 225, 2, 0.848);
@@ -148,6 +194,17 @@ button {
     cursor: pointer;
     font-size: 20px;
     padding-left: 0px;
+    transition-duration: 0.4s;
+}
+
+.checkoutBtn:hover {
+    background-color: rgb(97, 233, 126);
+}
+
+.checkoutBtn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateX(5px);
 }
 
 .formBtns{
@@ -169,18 +226,23 @@ button {
     height: 40px;
     width: 100px;
     border-radius: 20px;
-    border-color: #000000;
-    border-inline-style: revert;
-    border-bottom: double;
-    border-top: thin;
-    border-top-style: solid;
     cursor: pointer;
     font-size: 20px;
     padding-left: 0px;
     position: absolute;
     top: 40px;
     left: -20px;
+    transition-duration: 0.4s;
+}
 
+.manProductBtns:hover {
+    background-color: rgb(97, 233, 126);
+}
+
+.manProductBtns:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateX(5px);
 }
 
 .womanProductBtns{
@@ -190,19 +252,26 @@ button {
     height: 40px;
     width: 100px;
     border-radius: 20px;
-    border-color: #000000;
-    border-inline-style: revert;
-    border-bottom: double;
-    border-top: thin;
-    border-top-style: solid;
     cursor: pointer;
     font-size: 20px;
     padding-left: 0px;
     position: absolute;
     top: 100px;
     left: -20px;
-    
+    transition-duration: 0.4s;
 }
+
+.womanProductBtns:hover {
+    background-color: rgb(97, 233, 126);
+}
+
+.womanProductBtns:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateX(5px);
+}
+
+
 .styleInspirationHeader {
     position: absolute;
     width: 801px;

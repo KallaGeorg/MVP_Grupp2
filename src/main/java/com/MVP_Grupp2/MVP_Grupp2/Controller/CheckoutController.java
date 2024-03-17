@@ -52,7 +52,7 @@ public class CheckoutController {
         SessionCreateParams params = SessionCreateParams.builder()
                 .setUiMode(SessionCreateParams.UiMode.EMBEDDED)
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                .setReturnUrl("http://127.0.0.1:5500/MVP_Grupp2/src/main/resources/templates/confirmed.html")
+                .setReturnUrl("http://127.0.0.1:5500/src/main/resources/templates/confirmed.html")
                 .addAllLineItem(lineItems)
                 .build();
 
