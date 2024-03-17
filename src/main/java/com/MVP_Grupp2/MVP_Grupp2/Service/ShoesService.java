@@ -34,7 +34,8 @@ public class ShoesService {
             null, 
             60, 
             null, 
-            null
+            null, 
+            "prod_Pggcs0sm2KYTKX"
         );
         Shoes damshoes = new Shoes(
             22, 
@@ -44,7 +45,8 @@ public class ShoesService {
             null, 
             60, 
             null, 
-            null
+            null, 
+            "prod_PggdaMmdWB5kj3"
         );
 
         shoesRepository.save(herrshoes);
