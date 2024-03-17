@@ -37,9 +37,11 @@ button {
     padding-left: 30px;
 }
 
-/* button:hover {
-    background-color: rgb(97, 233, 126);
-} */
+button:active {
+    background-color: #ffffff;
+    box-shadow: 0 2px #ffffff;
+    transform: translateY(4px);
+}
 
 #lineHeader {
     height: 3px;
@@ -130,9 +132,9 @@ button {
 }
 
 .removeBtn:active {
-    background-color: #3e8e41;
+    background-color: #4CAF50;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);;
+    transform: translateY(4px);
 }
 
 .emptyBtn{
@@ -146,18 +148,13 @@ button {
     font-size: 20px;
     padding-left: 5px;
     place-content: right;
-    transition-duration: 0.4s;
-    
-}
-
-.emptyBtn:hover {
-    background-color: rgb(97, 233, 126);
 }
 
 .emptyBtn:active {
-    background-color: #3e8e41;
+    background-color: #4CAF50;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);
+    transform: translateY(4px);
+
 }
 
 .cancelBtn {
@@ -173,16 +170,11 @@ button {
     transition-duration: 0.4s;
 }
 
-.cancelBtn:hover {
-    background-color: rgb(97, 233, 126);
-}
-
 .cancelBtn:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateX(5px);
 }
-
 
 .checkoutBtn{
     background-color: rgba(2, 225, 2, 0.848);
@@ -197,14 +189,10 @@ button {
     transition-duration: 0.4s;
 }
 
-.checkoutBtn:hover {
-    background-color: rgb(97, 233, 126);
-}
-
 .checkoutBtn:active {
-    background-color: #3e8e41;
+    background-color: #4CAF50;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);
+    transform: translateY(4px);
 }
 
 .formBtns{
@@ -217,6 +205,12 @@ button {
     cursor: pointer;
     font-size: 20px;
     padding-left: 0px;
+}
+
+.formBtns:active {
+    background-color: #4CAF50;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 .manProductBtns{
@@ -235,14 +229,10 @@ button {
     transition-duration: 0.4s;
 }
 
-.manProductBtns:hover {
-    background-color: rgb(97, 233, 126);
-}
-
 .manProductBtns:active {
-    background-color: #3e8e41;
+    background-color: #4CAF50;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);
+    transform: translateY(4px);
 }
 
 .womanProductBtns{
@@ -258,19 +248,14 @@ button {
     position: absolute;
     top: 100px;
     left: -20px;
-    transition-duration: 0.4s;
-}
 
-.womanProductBtns:hover {
-    background-color: rgb(97, 233, 126);
 }
 
 .womanProductBtns:active {
-    background-color: #3e8e41;
+    background-color: #4CAF50;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);
+    transform: translateY(4px);
 }
-
 
 .styleInspirationHeader {
     position: absolute;
