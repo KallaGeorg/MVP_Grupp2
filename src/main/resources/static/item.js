@@ -14,6 +14,5 @@ class Item {
         this.price = price;
         this.count = count;
         this.stripeProductId = stripeProductId;
-        this.stripeProductId = stripeProductId;
     }
 }
