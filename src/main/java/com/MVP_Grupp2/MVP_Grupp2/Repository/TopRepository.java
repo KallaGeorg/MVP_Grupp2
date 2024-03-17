@@ -12,5 +12,4 @@ import com.MVP_Grupp2.MVP_Grupp2.Model.Top;
 public interface TopRepository extends JpaRepository <Top, Integer> {
     
     List<Top> findByGender(String gender);
-    List<Top> findByStripeProduct(String stripeProductId);
 }

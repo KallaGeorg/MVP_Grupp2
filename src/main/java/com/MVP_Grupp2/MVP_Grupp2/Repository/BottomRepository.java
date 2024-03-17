@@ -12,6 +12,5 @@ import com.MVP_Grupp2.MVP_Grupp2.Model.Bottom;
 public interface BottomRepository extends JpaRepository <Bottom,Integer> {
     
     List<Bottom> findByGender(String gender);
-    List<Bottom> findByStripeProduct(String stripeProductId);
    
 }

@@ -12,5 +12,4 @@ import com.MVP_Grupp2.MVP_Grupp2.Model.Shoes;
 public interface ShoesRepository extends JpaRepository  <Shoes,Integer> {
     
     List<Shoes> findByGender(String gender);
-    List<Shoes> findByStripeProduct(String stripeProductId);
 }
