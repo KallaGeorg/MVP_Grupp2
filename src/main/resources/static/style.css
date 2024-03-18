@@ -19,6 +19,7 @@ h1 {
     color: #ffffff;
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
 }
+
 h3 {
     font-size: 25px;
     text-align: center;
@@ -85,7 +86,7 @@ button:active {
     float: right;
 }
 
-#productContentDiv { 
+#productContentDiv {
     background-color: rgba(211, 211, 211, 0.8);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
     margin: 20px;
@@ -114,7 +115,11 @@ button:active {
     justify-content: space-between;
 }
 
-.removeBtn{
+.itemDiv img {
+    border-radius: 10px;
+}
+
+.removeBtn {
     background-color: rgba(2, 225, 2, 0.848);
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -131,12 +136,12 @@ button:active {
 }
 
 .removeBtn:active {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     box-shadow: 0 5px #666;
     transform: translateY(3px);
 }
 
-.emptyBtn{
+.emptyBtn {
     background-color: rgba(2, 225, 2, 0.848);
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -154,10 +159,9 @@ button:active {
 }
 
 .emptyBtn:active {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     box-shadow: 0 5px #666;
     transform: translateY(3px);
-
 }
 
 .cancelBtn {
@@ -182,7 +186,7 @@ button:active {
     transform: translateY(3px);
 }
 
-.checkoutBtn{
+.checkoutBtn {
     background-color: rgba(2, 225, 2, 0.848);
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -199,12 +203,12 @@ button:active {
 }
 
 .checkoutBtn:active {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     box-shadow: 0 5px #666;
     transform: translateY(3px);
 }
 
-.formBtns{
+.formBtns {
     background-color: rgba(2, 225, 2, 0.848);
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -221,12 +225,12 @@ button:active {
 }
 
 .formBtns:active {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     box-shadow: 0 5px #666;
     transform: translateY(3px);
 }
 
-.manProductBtns{
+.manProductBtns {
     background-color: rgba(2, 225, 2, 0.848);
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -246,12 +250,12 @@ button:active {
 }
 
 .manProductBtns:active {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     box-shadow: 0 5px #666;
     transform: translateY(3px);
 }
 
-.womanProductBtns{
+.womanProductBtns {
     background-color: rgba(2, 225, 2, 0.848);
     color: rgb(0, 0, 0);
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
@@ -264,7 +268,6 @@ button:active {
     position: absolute;
     top: 100px;
     left: -20px;
-
 }
 
 .womanProductBtns:hover {
@@ -272,9 +275,14 @@ button:active {
 }
 
 .womanProductBtns:active {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     box-shadow: 0 5px #666;
     transform: translateY(3px);
+}
+
+.manOutput img,
+.womanOutput img {
+    border-radius: 20px;
 }
 
 .styleInspirationHeader {
@@ -283,7 +291,7 @@ button:active {
     height: 53px;
     left: 520px;
     top: 131px;
-    font-family: 'Jacques Francois Shadow';
+    font-family: "Jacques Francois Shadow";
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
@@ -298,7 +306,7 @@ button:active {
     height: 58px;
     left: 518px;
     top: 208px;
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -306,15 +314,16 @@ button:active {
     color: #98e99c;
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.5);
 }
+
 .link {
-   
     display: block;
     margin-bottom: 5px;
     font-size: 20px;
     color: #a8ebc7;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    transition: color 0.3s, transform 0.3s; 
+    transition: color 0.3s, transform 0.3s;
 }
+
 .link:hover {
     color: #d5eee1;
     transform: scale(1.01);
@@ -325,4 +334,3 @@ ul {
     text-shadow: -2px 3px 3px rgba(0, 0, 0, 0.35);
     display: contents;
 }
-
