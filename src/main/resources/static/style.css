@@ -122,7 +122,6 @@ button {
     cursor: pointer;
     font-size: 20px;
     padding-left: 5px;
-    transition-duration: 0.4s;
 }
 
 .removeBtn:hover {
@@ -132,7 +131,7 @@ button {
 .removeBtn:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);;
+    transform: translateY(3px);
 }
 
 .emptyBtn{
@@ -157,7 +156,8 @@ button {
 .emptyBtn:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);
+    transform: translateY(3px);
+
 }
 
 .cancelBtn {
@@ -169,8 +169,11 @@ button {
     border-radius: 20px;
     cursor: pointer;
     font-size: 20px;
-    padding-left: 0px;
-    transition-duration: 0.4s;
+    padding-left: 5px;
+}
+
+.cancelBtn:hover {
+    background-color: rgb(97, 233, 126);
 }
 
 .cancelBtn:hover {
@@ -180,7 +183,7 @@ button {
 .cancelBtn:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);
+    transform: translateY(3px);
 }
 
 
@@ -194,7 +197,10 @@ button {
     cursor: pointer;
     font-size: 20px;
     padding-left: 0px;
-    transition-duration: 0.4s;
+}
+
+.checkoutBtn:hover {
+    background-color: rgb(97, 233, 126);
 }
 
 .checkoutBtn:hover {
@@ -204,7 +210,7 @@ button {
 .checkoutBtn:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);
+    transform: translateY(3px);
 }
 
 .formBtns{
@@ -217,6 +223,12 @@ button {
     cursor: pointer;
     font-size: 20px;
     padding-left: 0px;
+}
+
+.formBtns:active {
+    background-color: #4CAF50;
+    box-shadow: 0 5px #666;
+    transform: translateY(3px);
 }
 
 .manProductBtns{
@@ -232,7 +244,10 @@ button {
     position: absolute;
     top: 40px;
     left: -20px;
-    transition-duration: 0.4s;
+}
+
+.manProductBtns:hover {
+    background-color: rgb(97, 233, 126);
 }
 
 .manProductBtns:hover {
@@ -242,7 +257,7 @@ button {
 .manProductBtns:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);
+    transform: translateY(3px);
 }
 
 .womanProductBtns{
@@ -268,7 +283,7 @@ button {
 .womanProductBtns:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
-    transform: translateX(5px);
+    transform: translateY(3px);
 }
 
 
