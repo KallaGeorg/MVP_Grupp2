@@ -146,46 +146,47 @@ function loginContent() {
         showRegisterForm();
     });
 
-    loginUserBtn.addEventListener("click", function () {
-        let email = document.getElementById("text").value;
-        let password = document.getElementById("password").value;
+    loginUserBtn
+        .addEventListener("click", function () {
+            let email = document.getElementById("text").value;
+            let password = document.getElementById("password").value;
 
-        let loginDetails = {
-            email: email,
-            password: password,
-        };    
-        console.log(email, password);
+            let loginDetails = {
+                email: email,
+                password: password,
+            };
+            console.log(email, password);
 
-        fetch("http://localhost:8080/customer/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(loginDetails),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
+            fetch("http://localhost:8080/customer/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(loginDetails),
             })
-            .then((customer) => {
-                console.log(customer);
-                flush();
-                let loginSucces = document.createElement("h1");
-                loginSucces.innerHTML = "Välkommen " + customer.name;
-                localStorage.setItem("customerNumber", customer.customerNumber);
-                chartBtn.style.display = "inline-block";
-                orderBtn.style.display = "inline-block";
-                logoutBtn.style.display = "inline-block";
-                productBtn.style.display = "inline-block";
-                loginBtn.style.display = "none";
-                loginContentDiv.appendChild(loginSucces);
-            });
-    })
-    .catch((error) => {
-        console.error("Error:", error);
-    });
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then((customer) => {
+                    console.log(customer);
+                    flush();
+                    let loginSucces = document.createElement("h1");
+                    loginSucces.innerHTML = "Välkommen " + customer.name;
+                    localStorage.setItem("customerNumber", customer.customerNumber);
+                    chartBtn.style.display = "inline-block";
+                    orderBtn.style.display = "inline-block";
+                    logoutBtn.style.display = "inline-block";
+                    productBtn.style.display = "inline-block";
+                    loginBtn.style.display = "none";
+                    loginContentDiv.appendChild(loginSucces);
+                });
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
 }
 
 function productContent() {
@@ -406,7 +407,7 @@ function displayCart() {
             removeButton.className = "removeBtn";
             removeButton.addEventListener("click", () => {
                 cart.removeItemFromCart(item.name);
-                chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<"))              
+                chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<"));
                 displayCart();
             });
         });
@@ -418,7 +419,7 @@ function displayCart() {
 
     emptyBtn.addEventListener("click", () => {
         cart.clearCart();
-        chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<")); 
+        chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<"));
         displayCart();
     });
 
@@ -427,6 +428,7 @@ function displayCart() {
         flush();
         let checkoutDiv = document.createElement("div");
         checkoutDiv.setAttribute("id", "checkout");
+        pageContentDiv.style.height = "auto";
         pageContentDiv.appendChild(checkoutDiv);
         document.getElementById("pageContentDiv").style.display = "block";
         if (checkout != null && checkout.embeddedCheckout.isDestroyed === false) {
@@ -460,7 +462,7 @@ function showManProducts() {
                     addToCartBtn.className = "formBtns";
                     addToCartBtn.addEventListener("click", function () {
                         cart.addItemToCart(product.name, "../bilder/" + imageNames[index] + ".jpg", product.price, 1, product.stripeProductId);
-                        chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<")); 
+                        chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<"));
                     });
                     manProductOutput.appendChild(addToCartBtn);
                 });
@@ -495,7 +497,7 @@ function showWomanProducts() {
                     addToCartBtn.className = "formBtns";
                     addToCartBtn.addEventListener("click", function () {
                         cart.addItemToCart(product.name, "../bilder/" + imageNames[index] + ".jpg", product.price, 1, product.stripeProductId);
-                        chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<")); 
+                        chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<"));
                     });
                     womanProductOutput.appendChild(addToCartBtn);
                 });
