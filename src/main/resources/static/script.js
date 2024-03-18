@@ -13,100 +13,25 @@ let chartContentDiv = document.getElementById("chartContentDiv");
 let customerNumber = localStorage.getItem("customerNumber");
 let productContentDiv = document.getElementById("productContentDiv");
 let startContentText = startContent;
+let cart = new Cart();
 
 if (customerNumber) {
-    document.getElementById("chartBtn").style.display = "inline-block";
-    document.getElementById("productBtn").style.display = "inline-block";
-    document.getElementById("orderBtn").style.display = "inline-block";
-    document.getElementById("logoutBtn").style.display = "inline-block";
-    document.getElementById("loginBtn").style.display = "none";
+    chartBtn.style.display = "inline-block";
+    productBtn.style.display = "inline-block";
+    orderBtn.style.display = "inline-block";
+    logoutBtn.style.display = "inline-block";
+    loginBtn.style.display = "none";
 } else {
-    document.getElementById("chartBtn").style.display = "none";
-    document.getElementById("productBtn").style.display = "none";
-    document.getElementById("orderBtn").style.display = "none";
-    document.getElementById("logoutBtn").style.display = "none";
-    document.getElementById("loginBtn").style.display = "inline-block";
+    chartBtn.style.display = "none";
+    productBtn.style.display = "none";
+    orderBtn.style.display = "none";
+    logoutBtn.style.display = "none";
+    loginBtn.style.display = "inline-block";
 }
-let chartNumber = 3;
-
-let buttonContent = chartBtn.innerHTML;
-
-chartBtn.innerHTML = chartNumber + " " + buttonContent;
-
+chartBtn.innerHTML = cart.totalCount() + " " + chartBtn.innerHTML;
 flush();
 pageContentDiv.style.display = "block";
 homeContent();
-
-loginBtn.addEventListener("click", function () {
-    console.log("loginBtn clicked");
-    flush();
-
-    document.getElementById("loginContentDiv").style.display = "block";
-
-    loginContent();
-});
-
-productBtn.addEventListener("click", function () {
-    console.log("productBtn clicked");
-    flush();
-    document.getElementById("productBtnDiv").style.display = "flow";
-    productContent();
-});
-orderBtn.addEventListener("click", function () {
-    console.log("orderBtn clicked");
-    flush();
-});
-inspirationBtn.addEventListener("click", function () {
-    console.log("inspirationBtn clicked");
-    flush();
-    displayInspirationContent();
-});
-homeBtn.addEventListener("click", function () {
-    console.log("homeBtn clicked");
-    flush();
-
-    document.getElementById("pageContentDiv").style.display = "block";
-
-    homeContent();
-});
-chartBtn.addEventListener("click", function () {
-    console.log("chartBtn clicked");
-
-    document.getElementById("pageContentDiv").style.display = "none";
-    document.getElementById("loginContentDiv").style.display = "none";
-    document.getElementById("productContentDiv").style.display = "none";
-    document.getElementById("productBtnDiv").style.display = "none";
-
-    pageContentDiv.innerHTML = "";
-    loginContentDiv.innerHTML = "";
-    productContentDiv.innerHTML = "";
-    productBtnDiv.innerHTML = "";
-
-    if (document.getElementById("chartContentDiv").style.display === "none") {
-        flush();
-        document.getElementById("pageContentDiv").style.display = "none";
-        document.getElementById("loginContentDiv").style.display = "none";
-        document.getElementById("chartContentDiv").style.display = "flow";
-        chartContent();
-    } else {
-        flush();
-        document.getElementById("pageContentDiv").style.display = "block";
-        document.getElementById("loginContentDiv").style.display = "none";
-        document.getElementById("chartContentDiv").style.display = "none";
-        homeContent();
-    }
-});
-logoutBtn.addEventListener("click", function () {
-    localStorage.removeItem("customerNumber");
-    document.getElementById("chartBtn").style.display = "none";
-    document.getElementById("orderBtn").style.display = "none";
-    document.getElementById("logoutBtn").style.display = "none";
-    document.getElementById("loginBtn").style.display = "inline-block";
-    document.getElementById("productBtn").style.display = "none";
-    flush();
-    homeContent();
-    document.getElementById("pageContentDiv").style.display = "block";
-});
 
 function flush() {
     pageContentDiv.innerHTML = "";
@@ -114,16 +39,69 @@ function flush() {
     chartContentDiv.innerHTML = "";
     productContentDiv.innerHTML = "";
     productBtnDiv.innerHTML = "";
-    document.getElementById("pageContentDiv").style.display = "none";
-    document.getElementById("loginContentDiv").style.display = "none";
-    document.getElementById("productContentDiv").style.display = "none";
-    document.getElementById("productBtnDiv").style.display = "none";
-    document.getElementById("chartContentDiv").style.display = "none";
-
-   /* if (checkout != null && checkout.embeddedCheckout.isDestroyed === false) {
-        checkout.destroy("#checkout");
-    }       */
+    pageContentDiv.style.display = "none";
+    loginContentDiv.style.display = "none";
+    productContentDiv.style.display = "none";
+    productBtnDiv.style.display = "none";
+    chartContentDiv.style.display = "none";
 }
+
+loginBtn.addEventListener("click", function () {
+    console.log("loginBtn clicked");
+    flush();
+    loginContentDiv.style.display = "block";
+    loginContent();
+});
+
+productBtn.addEventListener("click", function () {
+    console.log("productBtn clicked");
+    flush();
+    productBtnDiv.style.display = "flow";
+    productContent();
+});
+
+orderBtn.addEventListener("click", function () {
+    console.log("orderBtn clicked");
+    flush();
+});
+
+inspirationBtn.addEventListener("click", function () {
+    console.log("inspirationBtn clicked");
+    flush();
+    displayInspirationContent();
+});
+
+homeBtn.addEventListener("click", function () {
+    console.log("homeBtn clicked");
+    flush();
+    pageContentDiv.style.display = "block";
+    homeContent();
+});
+
+chartBtn.addEventListener("click", function () {
+    console.log("chartBtn clicked");
+    if (chartContentDiv.style.display === "none") {
+        flush();
+        chartContentDiv.style.display = "flow";
+        chartContent();
+    } else {
+        flush();
+        pageContentDiv.style.display = "block";
+        homeContent();
+    }
+});
+
+logoutBtn.addEventListener("click", function () {
+    localStorage.removeItem("customerNumber");
+    chartBtn.style.display = "none";
+    orderBtn.style.display = "none";
+    logoutBtn.style.display = "none";
+    loginBtn.style.display = "inline-block";
+    productBtn.style.display = "none";
+    flush();
+    homeContent();
+    pageContentDiv.style.display = "block";
+});
 
 function loginContent() {
     let loginEmail = document.createElement("h1");
@@ -155,59 +133,59 @@ function loginContent() {
     cancelBtn.addEventListener("click", function () {
         console.log("cancelBtn clicked");
         flush();
-        document.getElementById("pageContentDiv").style.display = "block";
-        document.getElementById("loginContentDiv").style.display = "none";
+        pageContentDiv.style.display = "block";
+        loginContentDiv.style.display = "none";
         homeContent();
     });
 
     registerBtn.addEventListener("click", function () {
         console.log("registerBtn clicked");
         flush();
-        document.getElementById("pageContentDiv").style.display = "none";
-        document.getElementById("loginContentDiv").style.display = "block";
+        pageContentDiv.style.display = "none";
+        loginContentDiv.style.display = "block";
         showRegisterForm();
     });
-    loginUserBtn
-        .addEventListener("click", function () {
-            let email = document.getElementById("text").value;
-            let password = document.getElementById("password").value;
 
-            let loginDetails = {
-                email: email,
-                password: password,
-            };
-            console.log(email, password);
+    loginUserBtn.addEventListener("click", function () {
+        let email = document.getElementById("text").value;
+        let password = document.getElementById("password").value;
 
-            fetch("http://localhost:8080/customer/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(loginDetails),
-            })
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then((customer) => {
-                    console.log(customer);
-                    flush();
-                    let loginSucces = document.createElement("h1");
-                    loginSucces.innerHTML = "Välkommen " + customer.name;
-                    localStorage.setItem("customerNumber", customer.customerNumber);
-                    document.getElementById("chartBtn").style.display = "inline-block";
-                    document.getElementById("orderBtn").style.display = "inline-block";
-                    document.getElementById("logoutBtn").style.display = "inline-block";
-                    document.getElementById("productBtn").style.display = "inline-block";
-                    document.getElementById("loginBtn").style.display = "none";
-                    loginContentDiv.appendChild(loginSucces);
-                });
+        let loginDetails = {
+            email: email,
+            password: password,
+        };    
+        console.log(email, password);
+
+        fetch("http://localhost:8080/customer/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(loginDetails),
         })
-        .catch((error) => {
-            console.error("Error:", error);
-        });
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((customer) => {
+                console.log(customer);
+                flush();
+                let loginSucces = document.createElement("h1");
+                loginSucces.innerHTML = "Välkommen " + customer.name;
+                localStorage.setItem("customerNumber", customer.customerNumber);
+                chartBtn.style.display = "inline-block";
+                orderBtn.style.display = "inline-block";
+                logoutBtn.style.display = "inline-block";
+                productBtn.style.display = "inline-block";
+                loginBtn.style.display = "none";
+                loginContentDiv.appendChild(loginSucces);
+            });
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    });
 }
 
 function productContent() {
@@ -395,7 +373,6 @@ function chartContent() {
 }
 
 function displayCart() {
-    let cart = new Cart();
     let cartDiv = document.getElementById("cart");
     cartDiv.className = "cart";
     cartDiv.innerHTML = "";
@@ -423,12 +400,13 @@ function displayCart() {
                 <button class="removeBtn">Ta bort</button>
             `;
             cartDiv.append(itemDiv);
-        
+
             let removeButton = itemDiv.querySelector(".removeBtn");
             removeButton.style.marginLeft = "70px";
             removeButton.className = "removeBtn";
             removeButton.addEventListener("click", () => {
                 cart.removeItemFromCart(item.name);
+                chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<"))              
                 displayCart();
             });
         });
@@ -440,6 +418,7 @@ function displayCart() {
 
     emptyBtn.addEventListener("click", () => {
         cart.clearCart();
+        chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<")); 
         displayCart();
     });
 
@@ -450,15 +429,16 @@ function displayCart() {
         checkoutDiv.setAttribute("id", "checkout");
         pageContentDiv.appendChild(checkoutDiv);
         document.getElementById("pageContentDiv").style.display = "block";
+        if (checkout != null && checkout.embeddedCheckout.isDestroyed === false) {
+            checkout.destroy("#checkout");
+        }
         initializeCheckoutSession();
     });
 }
 
-
 function showManProducts() {
     let productTypes = ["bottom", "top", "shoes"];
     let imageNames = ["herrbyxor", "t-shirt_herr", "herrskor"];
-    let cart = new Cart();
 
     productTypes.forEach(function (productType, index) {
         fetch("http://localhost:8080/api/products/men/" + productType)
@@ -480,6 +460,7 @@ function showManProducts() {
                     addToCartBtn.className = "formBtns";
                     addToCartBtn.addEventListener("click", function () {
                         cart.addItemToCart(product.name, "../bilder/" + imageNames[index] + ".jpg", product.price, 1, product.stripeProductId);
+                        chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<")); 
                     });
                     manProductOutput.appendChild(addToCartBtn);
                 });
@@ -494,7 +475,6 @@ function showManProducts() {
 function showWomanProducts() {
     let productTypes = ["bottom", "top", "shoes"];
     let imageNames = ["dambyxor", "t-shirt_dam", "damskor"];
-    let cart = new Cart();
 
     productTypes.forEach(function (productType, index) {
         fetch("http://localhost:8080/api/products/woman/" + productType)
@@ -515,6 +495,7 @@ function showWomanProducts() {
                     addToCartBtn.className = "formBtns";
                     addToCartBtn.addEventListener("click", function () {
                         cart.addItemToCart(product.name, "../bilder/" + imageNames[index] + ".jpg", product.price, 1, product.stripeProductId);
+                        chartBtn.innerHTML = cart.totalCount() + chartBtn.innerHTML.substring(chartBtn.innerHTML.indexOf("<")); 
                     });
                     womanProductOutput.appendChild(addToCartBtn);
                 });

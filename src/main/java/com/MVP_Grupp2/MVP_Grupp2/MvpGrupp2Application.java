@@ -9,10 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class MvpGrupp2Application {
 
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(MvpGrupp2Application.class, args);
-	}
-	    @Bean
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(MvpGrupp2Application.class, args);
+    }
+
+    @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
@@ -23,5 +24,5 @@ public class MvpGrupp2Application {
                         .allowedHeaders("*");
             }
         };
-	}
+    }
 }
