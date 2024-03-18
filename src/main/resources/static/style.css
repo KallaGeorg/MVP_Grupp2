@@ -149,6 +149,10 @@ button:active {
     place-content: right;
 }
 
+.emptyBtn:hover {
+    background-color: rgb(97, 233, 126);
+}
+
 .emptyBtn:active {
     background-color: #4CAF50;
     box-shadow: 0 5px #666;
@@ -212,6 +216,10 @@ button:active {
     padding-left: 0px;
 }
 
+.formBtns:hover {
+    background-color: rgb(97, 233, 126);
+}
+
 .formBtns:active {
     background-color: #4CAF50;
     box-shadow: 0 5px #666;
@@ -257,6 +265,10 @@ button:active {
     top: 100px;
     left: -20px;
 
+}
+
+.womanProductBtns:hover {
+    background-color: rgb(97, 233, 126);
 }
 
 .womanProductBtns:active {
