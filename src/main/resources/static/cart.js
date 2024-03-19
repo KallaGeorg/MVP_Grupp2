@@ -10,9 +10,9 @@ class Cart {
         this.items = [];
         this.#cart = [];
         // Har vi några produkter i localStorage när scriptet läses in? Då lägger vi till produkterna i listan.
-        if (localStorage.getItem("cart") != null) {
+       /* if (localStorage.getItem("cart") != null) {
             this.loadCart();
-        }
+        }  */
     }
 
     // Sparar kundvagnen till localstorage.
