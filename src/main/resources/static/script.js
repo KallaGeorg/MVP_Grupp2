@@ -159,15 +159,7 @@ function loginContent() {
     loginUserBtn.addEventListener("click", function () {
         let email = document.getElementById("text").value;
         let password = document.getElementById("password").value;
-    loginUserBtn.addEventListener("click", function () {
-        let email = document.getElementById("text").value;
-        let password = document.getElementById("password").value;
 
-        let loginDetails = {
-            email: email,
-            password: password,
-        };
-        console.log(email, password);
         let loginDetails = {
             email: email,
             password: password,
@@ -206,8 +198,6 @@ function loginContent() {
         });
 
     });
-    
-    
 }
 
 function productContent() {
@@ -239,7 +229,7 @@ function productContent() {
         document.getElementById("productContentDiv").style.display = "block";
         showWomanProducts();
     });
-},
+}
 
 function homeContent() {
     let homeContent = document.createElement("h1");
