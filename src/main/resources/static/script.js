@@ -63,6 +63,13 @@ productBtn.addEventListener("click", function () {
 orderBtn.addEventListener("click", function () {
     console.log("orderBtn clicked");
     flush();
+    let construction = document.createElement("h1");
+    construction.innerHTML = "Under konstruktion...";
+    loginContentDiv.style.display = "block";
+    loginContentDiv.appendChild(construction);
+    loginContentDiv.style.width = "900px";
+    loginContentDiv.style.height = "150px";
+    
 });
 
 inspirationBtn.addEventListener("click", function () {
@@ -93,6 +100,8 @@ chartBtn.addEventListener("click", function () {
 
 logoutBtn.addEventListener("click", function () {
     localStorage.removeItem("customerNumber");
+    localStorage.removeItem("cart");
+    cart.clearCart();
     chartBtn.style.display = "none";
     orderBtn.style.display = "none";
     logoutBtn.style.display = "none";
@@ -101,6 +110,7 @@ logoutBtn.addEventListener("click", function () {
     flush();
     homeContent();
     pageContentDiv.style.display = "block";
+    location.reload();
 });
 
 function loginContent() {
@@ -149,7 +159,15 @@ function loginContent() {
     loginUserBtn.addEventListener("click", function () {
         let email = document.getElementById("text").value;
         let password = document.getElementById("password").value;
+    loginUserBtn.addEventListener("click", function () {
+        let email = document.getElementById("text").value;
+        let password = document.getElementById("password").value;
 
+        let loginDetails = {
+            email: email,
+            password: password,
+        };
+        console.log(email, password);
         let loginDetails = {
             email: email,
             password: password,
@@ -163,29 +181,33 @@ function loginContent() {
             },
             body: JSON.stringify(loginDetails),
         })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((customer) => {
-                console.log(customer);
-                flush();
-                let loginSucces = document.createElement("h1");
-                loginSucces.innerHTML = "Välkommen " + customer.name;
-                localStorage.setItem("customerNumber", customer.customerNumber);
-                chartBtn.style.display = "inline-block";
-                orderBtn.style.display = "inline-block";
-                logoutBtn.style.display = "inline-block";
-                productBtn.style.display = "inline-block";
-                loginBtn.style.display = "none";
-                loginContentDiv.appendChild(loginSucces);
-            });
-    })
-    .catch((error) => {
-        console.error("Error:", error);
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((customer) => {
+            console.log(customer);
+            flush();
+            let loginSucces = document.createElement("h1");
+            loginSucces.innerHTML = "Välkommen " + customer.name;
+            localStorage.setItem("customerNumber", customer.customerNumber);
+            chartBtn.style.display = "inline-block";
+            orderBtn.style.display = "inline-block";
+            logoutBtn.style.display = "inline-block";
+            productBtn.style.display = "inline-block";
+            loginContentDiv.style.display = "block";
+            loginBtn.style.display = "none";
+            loginContentDiv.appendChild(loginSucces);
+        })
+        .catch((error) => {
+                console.error("Error:", error);
+        });
+
     });
+    
+    
 }
 
 function productContent() {
@@ -217,7 +239,7 @@ function productContent() {
         document.getElementById("productContentDiv").style.display = "block";
         showWomanProducts();
     });
-}
+},
 
 function homeContent() {
     let homeContent = document.createElement("h1");
