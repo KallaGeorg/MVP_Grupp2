@@ -527,7 +527,7 @@ function displayInspirationContent() {
     för ett hållbart sätt att konsumera!<br><br>
 
     Vi vill inte bara sälja kläder, vi garantera även för kvalitet och vill uppmuntra till <br>att skänka bort kläderna
-    till second hand butiker eller till vänner och familj så att våra textila <br>produkter har en lång livscirkel.
+    till second hand butiker eller till vänner och familj så att våra textila <br>produkter har en lång livscykel.
     <br><br>
     “Slow fashion” är i dagsläget en internationell initiativ och ett temat som innebär att
     ta<br> sitt ansvar för kommande generarationer på världen.<br><br> 
